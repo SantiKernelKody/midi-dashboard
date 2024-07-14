@@ -1,0 +1,31 @@
+<div class="login-container">
+  <div class="login-box">
+    <img src="assets/img/logo.png" alt="Logo" class="logo" />
+    <h2>Login {{ role | titlecase }}</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="input-container">
+        <label for="username">Username</label>
+        <input
+          pInputText
+          id="username"
+          name="username"
+          aria-describedby="username-help"
+          [(ngModel)]="email"
+          required
+        />
+      </div>
+      <div class="input-container">
+        <label for="password">Password</label>
+        <p-password
+          name="password"
+          [(ngModel)]="password"
+          required
+          [toggleMask]="true"
+        />
+      </div>
+      <button type="submit" label="Submit" class="login-button">
+        Ingresar
+      </button>
+    </form>
+  </div>
+</div>
