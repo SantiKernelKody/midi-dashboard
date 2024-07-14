@@ -1,0 +1,112 @@
+<div class="sign-up-container">
+  <div class="sign-up-box">
+    <img src="assets/img/logo.png" alt="Logo" class="logo" />
+    <h2>Sign Up {{ role | titlecase }}</h2>
+    <form (ngSubmit)="onSubmit()" #signUpForm="ngForm">
+      <div class="form-field">
+        <label for="firstName">First Name</label>
+        <input
+          pInputText
+          id="firstName"
+          aria-describedby="firstName-help"
+          [(ngModel)]="firstName"
+          name="firstName"
+          required
+          #firstNameModel="ngModel"
+        />
+        <div
+          *ngIf="
+            firstNameModel.invalid &&
+            (firstNameModel.dirty || firstNameModel.touched)
+          "
+        >
+          <small class="error-text">First name is required.</small>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="lastName">Last Name</label>
+        <input
+          pInputText
+          id="lastName"
+          aria-describedby="lastName-help"
+          [(ngModel)]="lastName"
+          name="lastName"
+          required
+          #lastNameModel="ngModel"
+        />
+        <div
+          *ngIf="
+            lastNameModel.invalid &&
+            (lastNameModel.dirty || lastNameModel.touched)
+          "
+        >
+          <small class="error-text">Last name is required.</small>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input
+          pInputText
+          id="email"
+          aria-describedby="email-help"
+          [(ngModel)]="email"
+          name="email"
+          required
+          type="email"
+          #emailModel="ngModel"
+        />
+        <div
+          *ngIf="emailModel.invalid && (emailModel.dirty || emailModel.touched)"
+        >
+          <small class="error-text">Valid email is required.</small>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="password">Password</label>
+        <input
+          pInputText
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          required
+          type="password"
+          #passwordModel="ngModel"
+        />
+        <div
+          *ngIf="
+            passwordModel.invalid &&
+            (passwordModel.dirty || passwordModel.touched)
+          "
+        >
+          <small class="error-text">Password is required.</small>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          pInputText
+          id="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          required
+          type="password"
+          #confirmPasswordModel="ngModel"
+        />
+        <div
+          *ngIf="
+            confirmPasswordModel.invalid &&
+            (confirmPasswordModel.dirty || confirmPasswordModel.touched)
+          "
+        >
+          <small class="error-text">Confirmation is required.</small>
+        </div>
+      </div>
+      <p-button
+        label="Sign Up"
+        type="submit"
+        class="p-button-primary"
+        [disabled]="signUpForm.invalid"
+      ></p-button>
+    </form>
+  </div>
+</div>
