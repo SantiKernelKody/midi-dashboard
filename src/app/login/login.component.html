@@ -1,9 +1,12 @@
 <div class="login-container">
   <div class="login-box">
     <img src="assets/img/logo.png" alt="Logo" class="logo" />
-    <h2>Login {{ role | titlecase }}</h2>
-    <form (ngSubmit)="onSubmit()">
-      <div class="input-container">
+    <h2>Inicio sesión {{ role | role }}</h2>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <div
+        class="input-container"
+        [class.p-invalid]="!usernameModel.valid && usernameModel.touched"
+      >
         <label for="username">Username</label>
         <input
           pInputText
@@ -12,20 +15,38 @@
           aria-describedby="username-help"
           [(ngModel)]="email"
           required
+          #usernameModel="ngModel"
         />
+        <small
+          *ngIf="!usernameModel.valid && usernameModel.touched"
+          class="p-error"
+          >Username is required.</small
+        >
       </div>
-      <div class="input-container">
+      <div
+        class="input-container"
+        [class.p-invalid]="!passwordModel.valid && passwordModel.touched"
+      >
         <label for="password">Password</label>
         <p-password
           name="password"
           [(ngModel)]="password"
           required
-          [toggleMask]="true"
-        />
+          [feedback]="false"
+          #passwordModel="ngModel"
+        ></p-password>
+        <small
+          *ngIf="!passwordModel.valid && passwordModel.touched"
+          class="p-error"
+          >Password is required.</small
+        >
       </div>
-      <button type="submit" label="Submit" class="login-button">
-        Ingresar
-      </button>
+      <p-button
+        type="submit"
+        label="Submit"
+        class="login-button"
+        [disabled]="loginForm.invalid"
+      ></p-button>
     </form>
   </div>
 </div>

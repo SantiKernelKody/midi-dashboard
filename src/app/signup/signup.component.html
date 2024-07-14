@@ -1,7 +1,7 @@
 <div class="sign-up-container">
   <div class="sign-up-box">
     <img src="assets/img/logo.png" alt="Logo" class="logo" />
-    <h2>Sign Up {{ role | titlecase }}</h2>
+    <h2>Sign Up {{ role | role }}</h2>
     <form (ngSubmit)="onSubmit()" #signUpForm="ngForm">
       <div class="form-field">
         <label for="firstName">First Name</label>
@@ -102,7 +102,7 @@
         </div>
       </div>
       <p-button
-        label="Sign Up"
+        label="Registrarse"
         type="submit"
         class="p-button-primary"
         [disabled]="signUpForm.invalid"

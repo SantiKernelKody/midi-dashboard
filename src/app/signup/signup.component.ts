@@ -1,14 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { ROLES } from '../shared/constants';
+import { RolePipe } from '../role.pipe';
+
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ButtonModule, InputTextModule, FormsModule, CommonModule],
+  imports: [ButtonModule, InputTextModule, FormsModule, CommonModule, RolePipe],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
@@ -19,12 +22,16 @@ export class SignupComponent {
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
+  validRoles = [ROLES.ADMIN, ROLES.TEACHER, ROLES.PARENT];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.role = params['role'];
+      if (!this.validRoles.includes(this.role)) {
+        this.router.navigate(['']);
+      }
     });
   }
 
