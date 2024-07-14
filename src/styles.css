@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --black-color: #010208;
+    --white-color: #FAF9F6;
+}
+
+/* Rest of your CSS code */
+* {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--black-color);
+}

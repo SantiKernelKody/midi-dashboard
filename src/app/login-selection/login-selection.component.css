@@ -1,0 +1,61 @@
+.login-selection-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+  .login-box {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px 50px;
+    text-align: center;
+    width: 300px;
+  }
+  
+  .logo {
+    width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  
+  .login-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-button {
+    background-color: #007bff;
+    color: var(--white-color);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #0056b3;
+  }
+  .admin-button{
+    background: #6CA2E0;
+  }
+  .teacher-button{
+    background: #5FC4EA;
+  }
+  .parent-button{
+    background: #A7F582;
+    color: var(--black-color);
+  }
+  .parent-button:hover{
+    color: var(--white-color);
+  }
