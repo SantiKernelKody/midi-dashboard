@@ -1,0 +1,17 @@
+<div class="header-container">
+  <div class="header-left">
+    <h1>Dashboard</h1>
+  </div>
+  <div class="header-right">
+    <i class="pi pi-user" style="font-size: 1.5rem"></i>
+    <span class="user-name">{{ userName }}</span>
+    <p-button
+      type="button"
+      icon="pi pi-angle-down"
+      label="User"
+      class="p-button-text"
+      (click)="userMenu.toggle($event)"
+    ></p-button>
+    <p-menu #userMenu [popup]="true" [model]="userItems"></p-menu>
+  </div>
+</div>
