@@ -1,0 +1,14 @@
+<div class="sidebar">
+  <div class="logo">
+    <img src="assets/img/logo.png" alt="Logo" />
+  </div>
+  <span>Secciones</span>
+  <ul class="menu">
+    <li *ngFor="let item of menuItems">
+      <a href="#">
+        <i [class]="item.icon"></i>
+        <span>{{ item.label }}</span>
+      </a>
+    </li>
+  </ul>
+</div>
