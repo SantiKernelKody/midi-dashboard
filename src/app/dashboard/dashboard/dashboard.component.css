@@ -1,0 +1,31 @@
+.layout {
+    display: flex;
+    height: 100vh;
+  }
+  
+  app-side-bar {
+    width: 250px;
+    height: 100vh; /* Full height */
+    
+  }
+  
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  app-header {
+    width: 100%;
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    overflow-y: auto;
+  }
+  
+  

@@ -11,8 +11,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'general', pathMatch: 'full' },
       { path: 'general', component: GeneralComponent },
       { path: 'rendimiento', loadChildren: () => import('./performance/performance.module').then(m => m.PerformanceModule) },
-      { path: 'escuela', loadChildren: () => import('./escuela/escuela.module').then(m => m.EscuelaModule) },
-      { path: 'juegos', component: JuegosComponent }
+      { path: 'escuela', loadChildren: () => import('./school/school.module').then(m => m.SchoolModule) },
+      { path: 'juegos', loadChildren: () => import('./games/games.module').then(m => m.GamesModule) }
     ]
   }
 ];
