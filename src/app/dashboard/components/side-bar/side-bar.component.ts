@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
@@ -7,9 +6,9 @@ import { CommonModule } from '@angular/common';
 })
 export class SideBarComponent {
   menuItems = [
-    { label: 'General', icon: 'pi pi-home' },
+    { label: 'General', icon: 'pi pi-cog' },
     { label: 'Rendimiento', icon: 'pi pi-chart-line' },
-    { label: 'Escuela', icon: 'pi pi-building' },
+    { label: 'Escuela', icon: 'pi pi-graduation-cap' },
     { label: 'Juegos', icon: 'pi pi-crown' }
   ];
 }

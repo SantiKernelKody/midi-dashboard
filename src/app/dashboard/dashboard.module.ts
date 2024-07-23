@@ -8,20 +8,23 @@ import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { MenuModule } from 'primeng/menu';
 import { ButtonModule } from 'primeng/button';
+import { GeneralComponent } from './general/general.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     HeaderComponent,
-    SideBarComponent
+    SideBarComponent,
+
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     RouterModule,
     MenuModule,
-    ButtonModule
+    ButtonModule,
+    GeneralComponent
   ]
 })
 export class DashboardModule { }
