@@ -12,6 +12,6 @@ export class SideBarComponent {
     { label: 'General', icon: 'pi pi-home' },
     { label: 'Rendimiento', icon: 'pi pi-chart-line' },
     { label: 'Escuela', icon: 'pi pi-building' },
-    { label: 'Juegos', icon: 'pi pi-gamepad' }
+    { label: 'Juegos', icon: 'pi pi-crown' }
   ];
 }

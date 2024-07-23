@@ -19,8 +19,16 @@ export const routes: Routes = [
         component: SignupComponent
     },
     {
-        path: 'layout',
-        component: LayoutComponent
+        path: 'dashboard',
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+    },
+    {
+        path: '', redirectTo: '',
+        pathMatch: 'full'
+    },
+    {
+        path: '**',
+        redirectTo: ''
     }
 
 ];
