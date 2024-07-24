@@ -1,2 +1,14 @@
 <!--<app-admin-header></app-admin-header>-->
 <app-teacher-header></app-teacher-header>
+<h3>Nombre del juego</h3>
+<div class="chart-container">
+  <app-bar-chart
+    [title]="'Puntaje'"
+    [color]="'#E3B4FC'"
+    [data]="data"
+    [labels]="labels"
+  ></app-bar-chart>
+  <app-stacked-chart [data]="dataset" [labels]="labels2"></app-stacked-chart>
+  <app-bar-chart [data]="data" [labels]="labels"></app-bar-chart>
+  <app-stacked-chart [data]="dataset" [labels]="labels2"></app-stacked-chart>
+</div>

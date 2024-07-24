@@ -30,16 +30,28 @@ export class StackedChartComponent implements OnChanges {
     this.chartOptions = {
       responsive: true,
       maintainAspectRatio: false,
+      legend: {
+        position: 'right' // place legend on the right side of chart
+      },
       scales: {
-        xAxes: [{
-          stacked: true
-        }],
-        yAxes: [{
+        x: {
           stacked: true,
           ticks: {
-            beginAtZero: true
+            color: "#black"
+          },
+          grid: {
+            color: "rgba(255,255,255,0.2)"
           }
-        }]
+        },
+        y: {
+          stacked: true,
+          ticks: {
+            color: "#black"
+          },
+          grid: {
+            color: "rgba(255,255,255,0.2)"
+          }
+        }
       }
     };
   }
