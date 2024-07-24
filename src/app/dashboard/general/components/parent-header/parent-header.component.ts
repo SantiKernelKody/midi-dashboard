@@ -13,13 +13,11 @@ import { InfoCardComponent } from '../info-card/info-card.component';
 })
 export class ParentHeaderComponent {
   selectedGame: any;
-  infoCards = [
-    { title: 'Estudiantes', value: '100', icon: 'pi pi-users' },
-    { title: 'Cursos registrados', value: '200', icon: 'pi pi-crown' },
-  ];
-  gameCards = [
-    { title: 'Niños', value: '10', icon: 'pi pi-users' },
-    { title: 'Cursos', value: '30', icon: 'pi pi-book' },
+  selectedKid: any;
+  kids = [
+    { label: 'Player 1', value: '1' },
+    { label: 'PLayer 2', value: '2' },
+    { label: 'Player 3', value: '3' },
   ];
   games = [
     { label: 'Juego 1', value: '1' },

@@ -1,0 +1,27 @@
+.general-cards{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 500px;
+}
+.data-container{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    gap: 300px;
+}
+.data-game-title-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+}
+.data-general-title-container{
+    display: flex;
+    align-items: center;
+    height: 48px;
+}
+.data-container span{
+    font-weight: bolder;
+}

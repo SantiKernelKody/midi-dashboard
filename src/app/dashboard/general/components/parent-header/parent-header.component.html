@@ -3,15 +3,15 @@
   <div class="data-general">
     <div class="data-general-title-container">
       <span>Datos Generales</span>
-    </div>
-
-    <div class="general-cards">
-      <app-info-card
-        *ngFor="let card of infoCards"
-        [title]="card.title"
-        [value]="card.value"
-        [icon]="card.icon"
-      ></app-info-card>
+      <p-dropdown
+        [autoDisplayFirst]="false"
+        [options]="kids"
+        [(ngModel)]="selectedKid"
+        optionLabel="Juego"
+        optionLabel="label"
+        placeholder="Selecciona Juego"
+        appendTo="body"
+      />
     </div>
   </div>
   <div class="data-game">
@@ -24,16 +24,8 @@
         optionLabel="Juego"
         optionLabel="label"
         placeholder="Selecciona Juego"
+        appendTo="body"
       />
-    </div>
-
-    <div class="general-cards">
-      <app-info-card
-        *ngFor="let card of gameCards"
-        [title]="card.title"
-        [value]="card.value"
-        [icon]="card.icon"
-      ></app-info-card>
     </div>
   </div>
 </div>

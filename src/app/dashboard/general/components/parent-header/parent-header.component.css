@@ -15,12 +15,12 @@
     flex-direction: row;
     align-items: center;
     gap: 10px;
-
 }
 .data-general-title-container{
     display: flex;
     align-items: center;
     height: 48px;
+    gap: 10px;
 }
 .data-container span{
     font-weight: bolder;
