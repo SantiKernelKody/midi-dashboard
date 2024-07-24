@@ -1,7 +1,39 @@
-<span>MIDI Panel de control</span>
+<h3>MIDI Panel de control</h3>
 <div class="data-container">
   <div class="data-general">
-    <span>Datos Generales</span>
-    <div class="general-cards"></div>
+    <div class="data-general-title-container">
+      <span>Datos Generales</span>
+    </div>
+
+    <div class="general-cards">
+      <app-info-card
+        *ngFor="let card of infoCards"
+        [title]="card.title"
+        [value]="card.value"
+        [icon]="card.icon"
+      ></app-info-card>
+    </div>
+  </div>
+  <div class="data-game">
+    <div class="data-game-title-container">
+      <span>Datos general juego</span>
+      <p-dropdown
+        [autoDisplayFirst]="false"
+        [options]="games"
+        [(ngModel)]="selectedGame"
+        optionLabel="Juego"
+        optionLabel="label"
+        placeholder="Selecciona Juego"
+      />
+    </div>
+
+    <div class="general-cards">
+      <app-info-card
+        *ngFor="let card of gameCards"
+        [title]="card.title"
+        [value]="card.value"
+        [icon]="card.icon"
+      ></app-info-card>
+    </div>
   </div>
 </div>
