@@ -24,8 +24,11 @@
     padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align items to the top */
+    align-items: center; /* Align items to the top */
     overflow-y: auto;
   }
-  
+  /*
+  ::ng-deep .content .ng-star-inserted{
+    width: 100%;
+  }*/
   

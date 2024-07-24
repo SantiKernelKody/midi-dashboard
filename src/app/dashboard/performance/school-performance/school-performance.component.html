@@ -1,1 +1,56 @@
-<p>school-performance works!</p>
+<div class="performance-container">
+  <div class="performance-left">
+    <span>Escuela</span>
+    <p-dropdown
+      [autoDisplayFirst]="false"
+      [options]="schools"
+      [(ngModel)]="selectedSchool"
+      optionLabel="Juego"
+      optionLabel="label"
+      placeholder="Escuela"
+      appendTo="body"
+    />
+    <span>Fecha</span>
+    <p-calendar
+      [(ngModel)]="rangeDates"
+      selectionMode="range"
+      [readonlyInput]="true"
+      appendTo="body"
+    />
+    <span>Escenario</span>
+    <p-dropdown
+      [autoDisplayFirst]="false"
+      [options]="stages"
+      [(ngModel)]="selectedStage"
+      optionLabel="Juego"
+      optionLabel="label"
+      placeholder="Escenario"
+      appendTo="body"
+    />
+    <span>Juego</span>
+    <p-dropdown
+      [autoDisplayFirst]="false"
+      [options]="games"
+      [(ngModel)]="selectedGame"
+      optionLabel="Juego"
+      optionLabel="label"
+      placeholder="Juego"
+      appendTo="body"
+    />
+  </div>
+  <div class="performance-rigth">
+    <span>Datos Escuela: {{ selectedSchool?.label }}</span>
+    <app-bar-chart
+      [title]="'Puntaje'"
+      [color]="'#E3B4FC'"
+      [data]="data"
+      [labels]="labels"
+    ></app-bar-chart>
+    <app-grade-list
+      [title]="'Lista de cursos'"
+      [link]="'/performance/course'"
+      [firstColumnTitle]="'Curso'"
+      [items]="items"
+    ></app-grade-list>
+  </div>
+</div>

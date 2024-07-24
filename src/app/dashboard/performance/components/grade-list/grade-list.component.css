@@ -1,0 +1,32 @@
+.course-list-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    width: fit-content;
+  }
+  
+  .course-list-container h3 {
+    margin-top: 0;
+  }
+  
+  .p-table-wrapper {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  td a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+  }
+  
+  td a i {
+    margin-right: 8px;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  

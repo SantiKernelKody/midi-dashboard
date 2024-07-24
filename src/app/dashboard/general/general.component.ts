@@ -15,6 +15,6 @@ import { StackedChartComponent } from '../components/stacked-chart/stacked-chart
 export class GeneralComponent {
   labels = ['ex1', 'ex2', 'ex3'];
   data = [10, 20, 30];
-  dataset = [{ label: 'Completados', data: [10, 8], backgroundColor: '#5FC4EA' }, { label: 'Abandonados', data: [5, 3], backgroundColor: '#A7F582' }];
+  dataset = [{ label: 'Completados', data: [10, 8], backgroundColor: '#42A5F5' }, { label: 'Abandonados', data: [5, 3], backgroundColor: '#FFA726' }];
   labels2 = ['Capitulo 1', 'Capitulo2 '];
 }

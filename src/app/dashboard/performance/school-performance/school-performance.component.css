@@ -1,0 +1,12 @@
+.performance-left{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.performance-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 10px;
+}
