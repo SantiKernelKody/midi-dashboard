@@ -1,7 +1,7 @@
 <div class="login-container">
   <div class="login-box">
     <img src="assets/img/logo.png" alt="Logo" class="logo" />
-    <h2>Inicio sesión {{ role | role }}</h2>
+    <h2>Inicio sesión</h2>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
       <div
         class="input-container"
@@ -41,11 +41,20 @@
           >Password is required.</small
         >
       </div>
+      <div class="input-container">
+        <label for="role">Role</label>
+        <p-dropdown
+          [options]="roles"
+          [(ngModel)]="selectedRole"
+          name="role"
+          placeholder="Select a role"
+        ></p-dropdown>
+      </div>
       <p-button
         type="submit"
         label="Submit"
         class="login-button"
-        [disabled]="loginForm.invalid"
+        [disabled]="loginForm.invalid || !selectedRole"
       ></p-button>
     </form>
   </div>

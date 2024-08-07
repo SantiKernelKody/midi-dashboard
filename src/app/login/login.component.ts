@@ -7,11 +7,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { RolePipe } from '../role.pipe';
 import { ROLES } from '../shared/constants';
+import { AuthService } from '../services/auth.service';
+import { DropdownModule } from 'primeng/dropdown';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ButtonModule, InputTextModule, FormsModule, CommonModule, PasswordModule, RolePipe],
+  imports: [ButtonModule, InputTextModule, FormsModule, CommonModule, DropdownModule, PasswordModule, RolePipe, HttpClientModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -19,21 +22,21 @@ export class LoginComponent {
   role!: string;
   email: string = "";
   password: string = "";
-  validRoles = [ROLES.ADMIN, ROLES.TEACHER, ROLES.PARENT];
+  roles = [
+    { label: 'Admin', value: ROLES.ADMIN },
+    { label: 'Teacher', value: ROLES.TEACHER },
+    { label: 'Parent', value: ROLES.PARENT }
+  ];
+  selectedRole: string = "";
+  error: string = "";
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.role = params['role'];
-      if (!this.validRoles.includes(this.role)) {
-        this.router.navigate(['']);
-      }
-    });
-  }
   onSubmit(): void {
-    console.log('Username:', this.email);
-    console.log('Password:', this.password);
-    console.log('Role:', this.role);
+    // Aquí podrías incluir la lógica para manejar el rol seleccionado
+    this.authService.login(this.email, this.password, this.selectedRole).subscribe(
+      () => this.router.navigate(['/dashboard']),
+      err => this.error = 'Login failed'
+    );
   }
 }
