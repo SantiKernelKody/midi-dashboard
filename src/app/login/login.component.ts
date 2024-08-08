@@ -10,6 +10,7 @@ import { ROLES } from '../shared/constants';
 import { AuthService } from '../services/auth.service';
 import { DropdownModule } from 'primeng/dropdown';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -30,13 +31,17 @@ export class LoginComponent {
   selectedRole: string = "";
   error: string = "";
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private toastService: ToastService) { }
 
   onSubmit(): void {
-    // Aquí podrías incluir la lógica para manejar el rol seleccionado
     this.authService.login(this.email, this.password, this.selectedRole).subscribe(
-      () => this.router.navigate(['/dashboard']),
-      err => this.error = 'Login failed'
+      () => {
+        this.toastService.showSuccess('Login Successful', 'Welcome!');
+        this.router.navigate(['/dashboard']);
+      },
+      err => {
+        this.toastService.showError('Login Failed', 'Invalid credentials');
+      }
     );
   }
 }
