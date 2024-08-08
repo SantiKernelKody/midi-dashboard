@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -14,9 +14,16 @@ export class AuthService {
     constructor(private http: HttpClient, private router: Router) { }
 
     login(username: string, password: string, role: string): Observable<any> {
-        return this.http.post<any>(`${this.authUrl}/login`, { username, password }).pipe(
-            tap(response => this.setSession(response, role)),
-            catchError(this.handleError('login', []))
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const body = { email: username, rawpassword: password, role_name: role };
+
+        return this.http.post<any>(`${this.authUrl}/login`, body, { headers }).pipe(
+            tap(response => {
+                if (response && response.token) {
+                    this.setSession(response, role);
+                }
+            }),
+            catchError(this.handleError)
         );
     }
 
@@ -41,10 +48,24 @@ export class AuthService {
         return localStorage.getItem("role");
     }
 
-    private handleError<T>(operation = 'operation', result?: T) {
-        return (error: any): Observable<T> => {
-            console.error(error);
-            return of(result as T);
-        };
+    private handleError(error: HttpErrorResponse): Observable<never> {
+        let errorMessage = 'An unknown error occurred!';
+        if (error.error instanceof ErrorEvent) {
+            // Client-side error
+            errorMessage = `Error: ${error.error.message}`;
+        } else {
+            // Server-side error
+            if (error.status === 401) {
+                errorMessage = 'Unauthorized: Invalid username or password';
+            } else if (error.status === 403) {
+                errorMessage = 'Forbidden: Access is denied';
+            } else if (error.status === 500) {
+                errorMessage = 'Internal Server Error';
+            } else {
+                errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+            }
+        }
+        console.error(errorMessage);
+        return throwError(errorMessage);
     }
 }
