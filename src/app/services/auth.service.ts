@@ -19,7 +19,8 @@ export class AuthService {
 
         return this.http.post<any>(`${this.authUrl}/login`, body, { headers }).pipe(
             tap(response => {
-                if (response && response.token) {
+                if (response && response.access_token) {
+                    console.log('Token recibido:', response.access_token);
                     this.setSession(response, role);
                 }
             }),
@@ -28,17 +29,18 @@ export class AuthService {
     }
 
     private setSession(authResult: any, role: string): void {
-        localStorage.setItem(this.tokenKey, authResult.token);
+        localStorage.setItem('access_token', authResult.access_token);
         localStorage.setItem("role", role);
     }
 
     logout(): void {
-        localStorage.removeItem(this.tokenKey);
+        localStorage.removeItem('access_token');
+        localStorage.removeItem("role");
         this.router.navigate(['/login']);
     }
 
     getToken(): string | null {
-        return localStorage.getItem(this.tokenKey);
+        return localStorage.getItem('access_token');
     }
 
     isLoggedIn(): boolean {

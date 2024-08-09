@@ -20,6 +20,7 @@
       <p-dropdown
         [autoDisplayFirst]="false"
         [options]="games"
+        (onChange)="onGameSelect($event)"
         [(ngModel)]="selectedGame"
         optionLabel="Juego"
         optionLabel="label"
@@ -37,4 +38,36 @@
       ></app-info-card>
     </div>
   </div>
+</div>
+<h3>{{ selectedGame?.label }}</h3>
+<div class="chart-container">
+  <app-bar-chart
+    *ngIf="barChartData1"
+    [data]="barChartData1.data"
+    [labels]="barChartData1.labels"
+    [title]="'Puntaje Promedio por Nivel'"
+    [color]="'#E3B4FC'"
+  ></app-bar-chart>
+
+  <app-bar-chart
+    *ngIf="barChartData2"
+    [data]="barChartData2.data"
+    [labels]="barChartData2.labels"
+    [title]="'Tiempo Promedio por Nivel'"
+    [color]="'#FFCE56'"
+  ></app-bar-chart>
+
+  <app-stacked-chart
+    *ngIf="stackedChartData1"
+    [data]="stackedChartData1.data"
+    [labels]="stackedChartData1.labels"
+    [title]="'Estado de Niveles Completados vs Abandonados'"
+  ></app-stacked-chart>
+
+  <app-stacked-chart
+    *ngIf="stackedChartData2"
+    [data]="stackedChartData2.data"
+    [labels]="stackedChartData2.labels"
+    [title]="'Estado de Historias Completadas vs Abandonadas'"
+  ></app-stacked-chart>
 </div>

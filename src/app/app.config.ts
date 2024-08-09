@@ -5,9 +5,9 @@ import { routes } from './app.routes';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './guard/auth.guard';
 import { AuthService } from './services/auth.service';
-import { AuthInterceptor } from './auth.interceptor';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { AuthInterceptor } from '../auth.interceptor';
 
 
 export const appConfig: ApplicationConfig = {

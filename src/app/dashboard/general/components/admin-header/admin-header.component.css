@@ -24,3 +24,9 @@
 .data-container span{
     font-weight: bolder;
 }
+.chart-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}

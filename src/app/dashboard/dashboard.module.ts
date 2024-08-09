@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { MenuModule } from 'primeng/menu';
 import { ButtonModule } from 'primeng/button';
 import { GeneralComponent } from './general/general.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from '../../auth.interceptor';
 
 
 @NgModule({
@@ -16,7 +18,6 @@ import { GeneralComponent } from './general/general.component';
     DashboardComponent,
     HeaderComponent,
     SideBarComponent,
-
   ],
   imports: [
     CommonModule,
@@ -24,6 +25,7 @@ import { GeneralComponent } from './general/general.component';
     RouterModule,
     MenuModule,
     ButtonModule,
+    HttpClientModule,
     GeneralComponent
   ]
 })
