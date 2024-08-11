@@ -3,7 +3,7 @@ import { InfoCardComponent } from '../info-card/info-card.component';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
-import { DashboardService } from '../../service/general.service';
+import { GeneralService } from '../../service/general.service';
 import { ChartBarComponent } from '../../../components/bar-chart/bar-chart.component';
 import { StackedChartComponent } from '../../../components/stacked-chart/stacked-chart.component';
 
@@ -28,7 +28,7 @@ export class AdminHeaderComponent {
   stackedChartData1: any;
   stackedChartData2: any;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: GeneralService) { }
 
   ngOnInit(): void {
     this.dashboardService.getGames().subscribe(games => {

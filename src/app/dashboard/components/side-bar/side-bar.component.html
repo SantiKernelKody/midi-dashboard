@@ -5,7 +5,7 @@
   <span>Secciones</span>
   <ul class="menu">
     <li *ngFor="let item of menuItems">
-      <a href="#">
+      <a [routerLink]="item.route">
         <i [class]="item.icon"></i>
         <span>{{ item.label }}</span>
       </a>

@@ -10,3 +10,11 @@
     flex-direction: row;
     gap: 10px;
 }
+
+.chart-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}

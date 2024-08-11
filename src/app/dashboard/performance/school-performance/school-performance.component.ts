@@ -5,6 +5,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { ChartBarComponent } from '../../components/bar-chart/bar-chart.component';
 import { StackedChartComponent } from '../../components/stacked-chart/stacked-chart.component';
 import { GradeListComponent } from '../components/grade-list/grade-list.component';
+import { PerformanceService } from '../service/performance.service';
+import { GeneralService } from '../../general/service/general.service';
 
 @Component({
   selector: 'app-school-performance',
@@ -14,25 +16,85 @@ import { GradeListComponent } from '../components/grade-list/grade-list.componen
   styleUrl: './school-performance.component.css'
 })
 export class SchoolPerformanceComponent {
-  selectedStage: any;
+  schools: any[] = [];
+  stages: any[] = [];
+  games: any[] = [];
   selectedSchool: any;
+  selectedStage: any;
   selectedGame: any;
-  labels = ['ex1', 'ex2', 'ex3'];
-  data = [10, 20, 30];
-  stages = [{ label: 'R0', value: 1 }, { label: 'R1', value: 2 }, { label: 'R2', value: 3 }];
   rangeDates: Date[] = [];
-  schools = [{ label: 'School 1', value: '1' }, { label: 'School 2', value: '2' }, { label: 'School 3', value: '3' }];
-  games = [
-    { label: 'Juego 1', value: '1' },
-    { label: 'Juego 2', value: '2' },
-    { label: 'Juego 3', value: '3' },
-  ];
-  items = [
-    { label: 'Ciencias-1ero', score: 8.5, id: '1' },
-    { label: 'Ciencias-2do', score: 9.0, id: '2' },
-    { label: 'Compu-3ero', score: 9.5, id: '3' },
-    { label: 'Ciencias-1ero', score: 8.5, id: '1' },
-    { label: 'Ciencias-2do', score: 9.0, id: '2' },
-    { label: 'Compu-3ero', score: 9.5, id: '3' }
-  ];
+
+
+  // Variables para almacenar datos de las gráficas y listas
+  levelGradesData: number[] = [];
+  levelGradesLabels: string[] = [];
+
+  levelTimesData: number[] = [];
+  levelTimesLabels: string[] = [];
+
+  levelStatesData: any[] = [];
+  levelStatesLabels: string[] = [];
+
+  storyStatesData: any[] = [];
+  storyStatesLabels: string[] = [];
+
+  storyTimesData: number[] = [];
+  storyTimesLabels: string[] = [];
+
+  items: { label: string; score: number; id: string }[] = [];
+
+
+  constructor(private performanceService: PerformanceService, private generalService: GeneralService) { }
+
+  ngOnInit(): void {
+    this.loadInitialData();
+  }
+
+  loadInitialData(): void {
+    this.performanceService.getSchoolsAdmin().subscribe(data => {
+      this.schools = data.map((school: { name: any; id: any; }) => ({ label: school.name, value: school.id }));
+    });
+
+    this.performanceService.getStages().subscribe(data => {
+      console.log("data STAGE: ", data);
+      this.stages = data.map((stage: { name: any; id: any; }) => ({ label: stage.name, value: stage.id }));
+    });
+
+    this.generalService.getGames().subscribe((data: { name: any; id: any; }[]) => {
+      this.games = data.map((game: { name: any; id: any; }) => ({ label: game.name, value: game.id }));
+    });
+  }
+
+  onFilterChange(): void {
+    console.log(this.selectedSchool, this.selectedStage, this.selectedGame, this.rangeDates);
+    if (this.selectedSchool && this.selectedStage && this.selectedGame && this.rangeDates.length === 2) {
+      const startDate = this.rangeDates[0].toISOString().split('T')[0];
+      const endDate = this.rangeDates[1].toISOString().split('T')[0];
+
+      this.performanceService.getPerformanceSchool(this.selectedSchool.value, startDate, endDate, this.selectedStage.value, this.selectedGame.value).subscribe(data => {
+
+        // Asignar datos y etiquetas para cada gráfica y lista por separado
+        this.levelGradesData = data.level_grades.data;
+        this.levelGradesLabels = data.level_grades.labels;
+
+        this.levelTimesData = data.level_times.data;
+        this.levelTimesLabels = data.level_times.labels;
+
+        this.levelStatesData = data.level_states.data;
+        this.levelStatesLabels = data.level_states.labels;
+
+        this.storyStatesData = data.story_states.data;
+        this.storyStatesLabels = data.story_states.labels;
+
+        this.storyTimesData = data.story_times.data;
+        this.storyTimesLabels = data.story_times.labels;
+
+        this.items = data.Course_list.map((course: { name_curso: any; id_curso: any; promedio_curso_juego: any; }) => ({
+          label: course.name_curso,
+          score: course.promedio_curso_juego,
+          id: course.id_curso
+        }));
+      });
+    }
+  }
 }

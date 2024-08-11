@@ -4,17 +4,23 @@ import { ParentHeaderComponent } from './components/parent-header/parent-header.
 import { TeacherHeaderComponent } from './components/teacher-header/teacher-header.component';
 import { ChartBarComponent } from '../components/bar-chart/bar-chart.component';
 import { StackedChartComponent } from '../components/stacked-chart/stacked-chart.component';
+import { AuthService } from '../../services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-general',
   standalone: true,
-  imports: [AdminHeaderComponent, ParentHeaderComponent, TeacherHeaderComponent, ChartBarComponent, StackedChartComponent],
+  imports: [AdminHeaderComponent, ParentHeaderComponent, TeacherHeaderComponent, ChartBarComponent, StackedChartComponent, CommonModule],
   templateUrl: './general.component.html',
   styleUrl: './general.component.css'
 })
 export class GeneralComponent {
-  labels = ['ex1', 'ex2', 'ex3'];
-  data = [10, 20, 30];
-  dataset = [{ label: 'Completados', data: [10, 8], backgroundColor: '#42A5F5' }, { label: 'Abandonados', data: [5, 3], backgroundColor: '#FFA726' }];
-  labels2 = ['Capitulo 1', 'Capitulo2 '];
+  role: string | null = null;
+
+  constructor(private authService: AuthService) { }
+
+  ngOnInit(): void {
+    // Obtener el rol del usuario actual desde el AuthService
+    this.role = this.authService.getUserRole(); // Suponiendo que tienes un método para obtener el rol
+  }
 }

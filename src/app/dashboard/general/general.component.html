@@ -1,3 +1,9 @@
-<!--<app-admin-header></app-admin-header>-->
-<!--<app-teacher-header></app-teacher-header>-->
-<app-parent-header></app-parent-header>
+<div *ngIf="role === 'admin'">
+  <app-admin-header></app-admin-header>
+</div>
+<div *ngIf="role === 'teacher'">
+  <app-teacher-header></app-teacher-header>
+</div>
+<div *ngIf="role === 'parent'">
+  <app-parent-header></app-parent-header>
+</div>

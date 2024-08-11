@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
@@ -6,9 +7,13 @@ import { Component } from '@angular/core';
 })
 export class SideBarComponent {
   menuItems = [
-    { label: 'General', icon: 'pi pi-cog' },
-    { label: 'Rendimiento', icon: 'pi pi-chart-line' },
-    { label: 'Escuela', icon: 'pi pi-graduation-cap' },
-    { label: 'Juegos', icon: 'pi pi-crown' }
+    { label: 'General', icon: 'pi pi-cog', route: '/dashboard/general' },
+    { label: 'Rendimiento', icon: 'pi pi-chart-line', route: '/dashboard/rendimiento' },
+    { label: 'Escuela', icon: 'pi pi-graduation-cap', route: '/dashboard/school' },
+    { label: 'Juegos', icon: 'pi pi-crown', route: '/dashboard/games' },
   ];
+  constructor(private router: Router) { }
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
+  }
 }

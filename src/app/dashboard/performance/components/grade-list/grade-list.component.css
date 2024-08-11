@@ -1,3 +1,6 @@
+h4, tr th{
+  color: var(--black-color);
+}
 .course-list-container {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -18,7 +21,7 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #000;
+    color: var(--black-color);
   }
   
   td a i {

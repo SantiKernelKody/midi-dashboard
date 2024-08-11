@@ -1,56 +1,98 @@
 <div class="performance-container">
   <div class="performance-left">
+    <!-- Dropdowns para seleccionar filtros -->
     <span>Escuela</span>
     <p-dropdown
       [autoDisplayFirst]="false"
       [options]="schools"
       [(ngModel)]="selectedSchool"
-      optionLabel="Juego"
       optionLabel="label"
       placeholder="Escuela"
       appendTo="body"
-    />
+      (onChange)="onFilterChange()"
+    ></p-dropdown>
+
     <span>Fecha</span>
     <p-calendar
       [(ngModel)]="rangeDates"
       selectionMode="range"
       [readonlyInput]="true"
       appendTo="body"
-    />
+      (onSelect)="onFilterChange()"
+    ></p-calendar>
+
     <span>Escenario</span>
     <p-dropdown
       [autoDisplayFirst]="false"
       [options]="stages"
       [(ngModel)]="selectedStage"
-      optionLabel="Juego"
       optionLabel="label"
       placeholder="Escenario"
       appendTo="body"
-    />
+      (onChange)="onFilterChange()"
+    ></p-dropdown>
+
     <span>Juego</span>
     <p-dropdown
       [autoDisplayFirst]="false"
       [options]="games"
       [(ngModel)]="selectedGame"
-      optionLabel="Juego"
       optionLabel="label"
       placeholder="Juego"
       appendTo="body"
-    />
+      (onChange)="onFilterChange()"
+    ></p-dropdown>
   </div>
-  <div class="performance-rigth">
+
+  <div class="performance-right">
     <span>Datos Escuela: {{ selectedSchool?.label }}</span>
-    <app-bar-chart
-      [title]="'Puntaje'"
-      [color]="'#E3B4FC'"
-      [data]="data"
-      [labels]="labels"
-    ></app-bar-chart>
-    <app-grade-list
-      [title]="'Lista de cursos'"
-      [link]="'/performance/course'"
-      [firstColumnTitle]="'Curso'"
-      [items]="items"
-    ></app-grade-list>
+
+    <div class="chart-container">
+      <!-- Gráfico de puntajes por nivel (level_grades) -->
+      <app-bar-chart
+        [title]="'Puntaje por Nivel'"
+        [color]="'#E3B4FC'"
+        [data]="levelGradesData"
+        [labels]="levelGradesLabels"
+      ></app-bar-chart>
+
+      <!-- Lista de cursos -->
+      <app-grade-list
+        [title]="'Lista de cursos'"
+        [link]="'/performance/course'"
+        [firstColumnTitle]="'Curso'"
+        [items]="items"
+      ></app-grade-list>
+
+      <!-- Gráfico de tiempos por nivel (level_times) -->
+      <app-bar-chart
+        [title]="'Tiempo por Nivel'"
+        [color]="'#FFB6C1'"
+        [data]="levelTimesData"
+        [labels]="levelTimesLabels"
+      ></app-bar-chart>
+
+      <!-- Gráfico de estados de niveles (level_states) -->
+      <app-stacked-chart
+        [title]="'Estados de Niveles'"
+        [data]="levelStatesData"
+        [labels]="levelStatesLabels"
+      ></app-stacked-chart>
+
+      <!-- Gráfico de estados de historias (story_states) -->
+      <app-stacked-chart
+        [title]="'Estados de Historias'"
+        [data]="storyStatesData"
+        [labels]="storyStatesLabels"
+      ></app-stacked-chart>
+
+      <!-- Gráfico de tiempos por historia (story_times) -->
+      <app-bar-chart
+        [title]="'Tiempo por Historia'"
+        [color]="'#ADD8E6'"
+        [data]="storyTimesData"
+        [labels]="storyTimesLabels"
+      ></app-bar-chart>
+    </div>
   </div>
 </div>
