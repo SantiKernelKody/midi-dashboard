@@ -43,56 +43,65 @@
       (onChange)="onFilterChange()"
     ></p-dropdown>
   </div>
-
   <div class="performance-right">
-    <span>Datos Escuela: {{ selectedSchool?.label }}</span>
+    <div
+      *ngIf="
+        this.selectedSchool &&
+        this.selectedStage &&
+        this.selectedGame &&
+        this.rangeDates.length === 2
+      "
+      class="performance-right"
+    >
+      <span>Datos Escuela: {{ selectedSchool?.label }}</span>
 
-    <div class="chart-container">
-      <!-- Gráfico de puntajes por nivel (level_grades) -->
-      <app-bar-chart
-        [title]="'Puntaje por Nivel'"
-        [color]="'#E3B4FC'"
-        [data]="levelGradesData"
-        [labels]="levelGradesLabels"
-      ></app-bar-chart>
+      <div class="chart-container">
+        <!-- Gráfico de puntajes por nivel (level_grades) -->
+        <app-bar-chart
+          [title]="'Puntaje por Nivel'"
+          [color]="'#E3B4FC'"
+          [data]="levelGradesData"
+          [labels]="levelGradesLabels"
+        ></app-bar-chart>
 
-      <!-- Lista de cursos -->
-      <app-grade-list
-        [title]="'Lista de cursos'"
-        [link]="'/performance/course'"
-        [firstColumnTitle]="'Curso'"
-        [items]="items"
-      ></app-grade-list>
+        <!-- Lista de cursos -->
+        <app-grade-list
+          [title]="'Lista de cursos'"
+          [link]="'/performance/course'"
+          [firstColumnTitle]="'Curso'"
+          [items]="items"
+        ></app-grade-list>
 
-      <!-- Gráfico de tiempos por nivel (level_times) -->
-      <app-bar-chart
-        [title]="'Tiempo por Nivel'"
-        [color]="'#FFB6C1'"
-        [data]="levelTimesData"
-        [labels]="levelTimesLabels"
-      ></app-bar-chart>
+        <!-- Gráfico de tiempos por nivel (level_times) -->
+        <app-bar-chart
+          [title]="'Tiempo por Nivel'"
+          [color]="'#FFB6C1'"
+          [data]="levelTimesData"
+          [labels]="levelTimesLabels"
+        ></app-bar-chart>
 
-      <!-- Gráfico de estados de niveles (level_states) -->
-      <app-stacked-chart
-        [title]="'Estados de Niveles'"
-        [data]="levelStatesData"
-        [labels]="levelStatesLabels"
-      ></app-stacked-chart>
+        <!-- Gráfico de estados de niveles (level_states) -->
+        <app-stacked-chart
+          [title]="'Estados de Niveles'"
+          [data]="levelStatesData"
+          [labels]="levelStatesLabels"
+        ></app-stacked-chart>
 
-      <!-- Gráfico de estados de historias (story_states) -->
-      <app-stacked-chart
-        [title]="'Estados de Historias'"
-        [data]="storyStatesData"
-        [labels]="storyStatesLabels"
-      ></app-stacked-chart>
+        <!-- Gráfico de estados de historias (story_states) -->
+        <app-stacked-chart
+          [title]="'Estados de Historias'"
+          [data]="storyStatesData"
+          [labels]="storyStatesLabels"
+        ></app-stacked-chart>
 
-      <!-- Gráfico de tiempos por historia (story_times) -->
-      <app-bar-chart
-        [title]="'Tiempo por Historia'"
-        [color]="'#ADD8E6'"
-        [data]="storyTimesData"
-        [labels]="storyTimesLabels"
-      ></app-bar-chart>
+        <!-- Gráfico de tiempos por historia (story_times) -->
+        <app-bar-chart
+          [title]="'Tiempo por Historia'"
+          [color]="'#ADD8E6'"
+          [data]="storyTimesData"
+          [labels]="storyTimesLabels"
+        ></app-bar-chart>
+      </div>
     </div>
   </div>
 </div>

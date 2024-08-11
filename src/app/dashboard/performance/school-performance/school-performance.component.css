@@ -12,9 +12,14 @@
 }
 
 .chart-container{
+
     display: flex;
     flex-wrap: wrap;
     gap: 50px;
     justify-content: center;
     align-items: center;
+}
+
+.performance-right{
+    min-width: 1000px;
 }

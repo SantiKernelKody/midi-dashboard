@@ -7,11 +7,12 @@ import { StackedChartComponent } from '../../components/stacked-chart/stacked-ch
 import { GradeListComponent } from '../components/grade-list/grade-list.component';
 import { PerformanceService } from '../service/performance.service';
 import { GeneralService } from '../../general/service/general.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-school-performance',
   standalone: true,
-  imports: [DropdownModule, FormsModule, CalendarModule, ChartBarComponent, StackedChartComponent, GradeListComponent],
+  imports: [DropdownModule, FormsModule, CalendarModule, ChartBarComponent, StackedChartComponent, GradeListComponent, CommonModule],
   templateUrl: './school-performance.component.html',
   styleUrl: './school-performance.component.css'
 })

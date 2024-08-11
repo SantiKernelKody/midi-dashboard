@@ -32,4 +32,23 @@ export class PerformanceService {
 
         return this.http.get(`${this.baseUrl}/get_performance_school`, { params });
     }
+    getCourses(schoolId: number): Observable<any> {
+        return this.http.get(`${this.baseUrl}/get_courses`, {
+            params: {
+                school_id: schoolId
+            }
+        });
+    }
+
+    getPerformanceCourse(courseId: number, startDate: string, endDate: string, stageId: number, gameId: number): Observable<any> {
+        return this.http.get(`${this.baseUrl}/get_performance_course`, {
+            params: {
+                course_id: courseId,
+                start_date: startDate,
+                end_date: endDate,
+                stage_id: stageId,
+                game_id: gameId
+            }
+        });
+    }
 }
