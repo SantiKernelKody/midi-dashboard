@@ -5,16 +5,14 @@ import { CoursePerformanceComponent } from './course-performance/course-performa
 import { ChildPerformanceComponent } from './child-performance/child-performance.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: SchoolPerformanceComponent,
-    children: [
-      { path: '', redirectTo: 'school', pathMatch: 'full' },
-      { path: 'school', component: SchoolPerformanceComponent },
-      { path: 'course', component: CoursePerformanceComponent },
-      { path: 'child', component: ChildPerformanceComponent }
-    ]
-  }
+
+
+  { path: '', redirectTo: 'school', pathMatch: 'full' },
+  { path: 'school', component: SchoolPerformanceComponent },
+  { path: 'curso/:school_id/:course_id', component: CoursePerformanceComponent },
+  { path: 'child', component: ChildPerformanceComponent }
+
+
 ];
 
 @NgModule({

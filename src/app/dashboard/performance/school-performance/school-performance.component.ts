@@ -50,6 +50,9 @@ export class SchoolPerformanceComponent {
   ngOnInit(): void {
     this.loadInitialData();
   }
+  getLink(): string {
+    return `/dashboard/rendimiento/curso/${this.selectedSchool.value}`;
+  }
 
   loadInitialData(): void {
     this.performanceService.getSchoolsAdmin().subscribe(data => {
@@ -57,7 +60,6 @@ export class SchoolPerformanceComponent {
     });
 
     this.performanceService.getStages().subscribe(data => {
-      console.log("data STAGE: ", data);
       this.stages = data.map((stage: { name: any; id: any; }) => ({ label: stage.name, value: stage.id }));
     });
 

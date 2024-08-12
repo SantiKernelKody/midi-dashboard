@@ -40,15 +40,16 @@ export class PerformanceService {
         });
     }
 
-    getPerformanceCourse(courseId: number, startDate: string, endDate: string, stageId: number, gameId: number): Observable<any> {
+    getPerformanceCourse(courseId: number, startDate: string | null, endDate: string | null, stageId: number, gameId: number): Observable<any> {
         return this.http.get(`${this.baseUrl}/get_performance_course`, {
             params: {
                 course_id: courseId,
-                start_date: startDate,
-                end_date: endDate,
+                start_date: startDate!,
+                end_date: endDate!,
                 stage_id: stageId,
                 game_id: gameId
             }
         });
     }
+
 }
