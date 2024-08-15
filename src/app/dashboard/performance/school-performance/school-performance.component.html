@@ -43,17 +43,18 @@
       (onChange)="onFilterChange()"
     ></p-dropdown>
   </div>
+
   <div class="performance-right">
-    <div
-      *ngIf="
-        this.selectedSchool &&
-        this.selectedStage &&
-        this.selectedGame &&
-        this.rangeDates.length === 2
-      "
-      class="performance-right"
-    >
-      <span>Datos Escuela: {{ selectedSchool?.label }}</span>
+    <!-- Mostrar mensaje si faltan filtros -->
+    <div *ngIf="!allFiltersSelected()" class="no-results">
+      <p>Por favor, selecciona todos los filtros para ver los resultados.</p>
+    </div>
+
+    <!-- Mostrar gráficos si todos los filtros están seleccionados -->
+    <div *ngIf="allFiltersSelected()">
+      <span class="school-name"
+        >Datos Escuela: {{ selectedSchool?.label }}</span
+      >
 
       <div class="chart-container">
         <!-- Gráfico de puntajes por nivel (level_grades) -->

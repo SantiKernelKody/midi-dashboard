@@ -9,7 +9,7 @@ export class SideBarComponent {
   menuItems = [
     { label: 'General', icon: 'pi pi-cog', route: '/dashboard/general' },
     { label: 'Rendimiento', icon: 'pi pi-chart-line', route: '/dashboard/rendimiento' },
-    { label: 'Escuela', icon: 'pi pi-graduation-cap', route: '/dashboard/school' },
+    { label: 'Gestion escolar', icon: 'pi pi-graduation-cap', route: '/dashboard/school' },
     { label: 'Juegos', icon: 'pi pi-crown', route: '/dashboard/games' },
   ];
   constructor(private router: Router) { }

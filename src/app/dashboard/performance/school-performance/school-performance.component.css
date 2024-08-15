@@ -23,3 +23,9 @@
 .performance-right{
     min-width: 1000px;
 }
+.school-name{
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--black-color);
+  }

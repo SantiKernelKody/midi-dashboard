@@ -53,6 +53,14 @@ export class SchoolPerformanceComponent {
   getLink(): string {
     return `/dashboard/rendimiento/curso/${this.selectedSchool.value}`;
   }
+  allFiltersSelected(): boolean {
+    return (
+      this.selectedSchool &&
+      this.rangeDates.length === 2 &&
+      this.selectedStage &&
+      this.selectedGame
+    );
+  }
 
   loadInitialData(): void {
     this.performanceService.getSchoolsAdmin().subscribe(data => {

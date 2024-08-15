@@ -1,5 +1,6 @@
 <div class="performance-container">
   <div class="performance-left">
+    <!-- Dropdowns para seleccionar filtros -->
     <span>Curso</span>
     <p-dropdown
       [options]="courses"
@@ -9,6 +10,7 @@
       placeholder="Selecciona Curso"
       appendTo="body"
     ></p-dropdown>
+
     <span>Fecha</span>
     <p-calendar
       [(ngModel)]="rangeDates"
@@ -17,6 +19,7 @@
       appendTo="body"
       (onSelect)="onCourseSelect()"
     ></p-calendar>
+
     <span>Escenario</span>
     <p-dropdown
       [options]="stages"
@@ -26,6 +29,7 @@
       placeholder="Selecciona Escenario"
       appendTo="body"
     ></p-dropdown>
+
     <span>Juego</span>
     <p-dropdown
       [options]="games"
@@ -36,51 +40,68 @@
       (onChange)="onCourseSelect()"
     ></p-dropdown>
   </div>
+
   <div class="performance-right">
-    <span>Datos Curso: {{ selectedCourse?.label }}</span>
-    <div class="chart-container">
-      <!-- Gráfica de puntaje por nivel -->
-      <app-bar-chart
-        [title]="'Puntaje por Nivel'"
-        [data]="levelGradesData"
-        [color]="'#E3B4FC'"
-        [labels]="levelGradesLabels"
-      ></app-bar-chart>
-      <app-grade-list
-        [title]="'Lista de Estudiantes'"
-        [link]="'/performance/student'"
-        [firstColumnTitle]="'Estudiante'"
-        [items]="students"
-      ></app-grade-list>
-      <!-- Gráfica de tiempo por nivel -->
-      <app-bar-chart
-        [title]="'Tiempo por Nivel'"
-        [data]="levelTimesData"
-        [color]="'#FFB6C1'"
-        [labels]="levelTimesLabels"
-      ></app-bar-chart>
+    <!-- Agregar flecha para regresar -->
+    <button class="back-button" (click)="goBack()">
+      <i class="pi pi-arrow-left"></i> Atrás
+    </button>
 
-      <!-- Gráfica de estados de nivel (completados/abandonados) -->
-      <app-stacked-chart
-        [title]="'Estados por Nivel'"
-        [data]="levelStatesData"
-        [labels]="levelStatesLabels"
-      ></app-stacked-chart>
+    <!-- Mostrar mensaje si faltan filtros -->
+    <div *ngIf="!allFiltersSelected()" class="no-results">
+      <p>Por favor, selecciona todos los filtros para ver los resultados.</p>
+    </div>
 
-      <!-- Gráfica de estados de historias (completados/abandonados) -->
-      <app-stacked-chart
-        [title]="'Estados por Historia'"
-        [data]="storyStatesData"
-        [labels]="storyStatesLabels"
-      ></app-stacked-chart>
+    <!-- Mostrar gráficos si todos los filtros están seleccionados -->
+    <div *ngIf="allFiltersSelected()">
+      <span class="course-name">Datos Curso: {{ selectedCourse?.label }}</span>
+      <div class="chart-container">
+        <!-- Gráfica de puntaje por nivel -->
+        <app-bar-chart
+          [title]="'Puntaje por Nivel'"
+          [data]="levelGradesData"
+          [color]="'#E3B4FC'"
+          [labels]="levelGradesLabels"
+        ></app-bar-chart>
 
-      <!-- Gráfica de tiempo por historia -->
-      <app-bar-chart
-        [title]="'Tiempo por Historia'"
-        [data]="storyTimesData"
-        [color]="'#ADD8E6'"
-        [labels]="storyTimesLabels"
-      ></app-bar-chart>
+        <!-- Lista de Estudiantes -->
+        <app-grade-list
+          [title]="'Lista de Estudiantes'"
+          [link]="'/performance/student'"
+          [firstColumnTitle]="'Estudiante'"
+          [items]="students"
+        ></app-grade-list>
+
+        <!-- Gráfica de tiempo por nivel -->
+        <app-bar-chart
+          [title]="'Tiempo por Nivel'"
+          [data]="levelTimesData"
+          [color]="'#FFB6C1'"
+          [labels]="levelTimesLabels"
+        ></app-bar-chart>
+
+        <!-- Gráfica de estados de nivel (completados/abandonados) -->
+        <app-stacked-chart
+          [title]="'Estados por Nivel'"
+          [data]="levelStatesData"
+          [labels]="levelStatesLabels"
+        ></app-stacked-chart>
+
+        <!-- Gráfica de estados de historias (completados/abandonados) -->
+        <app-stacked-chart
+          [title]="'Estados por Historia'"
+          [data]="storyStatesData"
+          [labels]="storyStatesLabels"
+        ></app-stacked-chart>
+
+        <!-- Gráfica de tiempo por historia -->
+        <app-bar-chart
+          [title]="'Tiempo por Historia'"
+          [data]="storyTimesData"
+          [color]="'#ADD8E6'"
+          [labels]="storyTimesLabels"
+        ></app-bar-chart>
+      </div>
     </div>
   </div>
 </div>

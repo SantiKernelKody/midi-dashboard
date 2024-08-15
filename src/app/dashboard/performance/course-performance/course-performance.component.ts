@@ -7,7 +7,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ChartBarComponent } from '../../components/bar-chart/bar-chart.component';
 import { StackedChartComponent } from '../../components/stacked-chart/stacked-chart.component';
 import { GradeListComponent } from '../components/grade-list/grade-list.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GeneralService } from '../../general/service/general.service';
 
 @Component({
@@ -47,6 +47,7 @@ export class CoursePerformanceComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private performanceService: PerformanceService,
     private generalService: GeneralService
   ) { }
@@ -83,6 +84,18 @@ export class CoursePerformanceComponent {
     this.generalService.getGames().subscribe(games => {
       this.games = games.map((game: { name: any; id: any; }) => ({ label: game.name, value: game.id }));
     });
+  }
+  goBack(): void {
+    this.router.navigate(['/dashboard/rendimiento/school']);
+  }
+
+  allFiltersSelected(): boolean {
+    return (
+      this.selectedCourse &&
+      this.rangeDates.length === 2 &&
+      this.selectedStage &&
+      this.selectedGame
+    );
   }
 
   onCourseSelect(): void {
