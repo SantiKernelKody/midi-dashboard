@@ -43,3 +43,16 @@
     margin-bottom: 10px;
   }
   
+  .reset-password-link {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .reset-password-link a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .reset-password-link a:hover {
+    text-decoration: underline;
+  }

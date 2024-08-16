@@ -2,11 +2,15 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { ToastService } from '../services/toast.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-reset-password',
   standalone: true,
-  imports: [],
+  imports: [ButtonModule, InputTextModule, FormsModule, CommonModule],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.css'
 })

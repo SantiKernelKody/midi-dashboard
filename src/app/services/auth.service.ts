@@ -20,7 +20,9 @@ export class AuthService {
         return this.http.post(`${this.authUrl}/signup`, signupData);
     }
     requestResetPassword(email: string): Observable<any> {
-        return this.http.post(`${this.authUrl}/request_reset_password`, { email });
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const body = { email: email, };
+        return this.http.post<any>(`${this.authUrl}/request_reset_password`, body, { headers });
     }
 
     verifyResetPasswordToken(token: string): Observable<any> {
