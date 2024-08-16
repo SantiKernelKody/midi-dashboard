@@ -1,1 +1,75 @@
-<p>child-performance works!</p>
+<div class="child-performance-container">
+  <div class="user-info-dropdown">
+    <button class="back-button" (click)="goBack()">
+      <i class="pi pi-arrow-left"></i> Atrás
+    </button>
+    <!-- Información del niño -->
+    <div class="child-info">
+      <h3>Información del Niño</h3>
+      <p><strong>Nombre:</strong> {{ playerData.full_name }}</p>
+      <p><strong>Edad:</strong> {{ playerData.age }}</p>
+      <p><strong>Etnia:</strong> {{ playerData.ethnicity }}</p>
+      <p><strong>Email:</strong> {{ playerData.email }}</p>
+      <p>
+        <strong>Nombre del Representante:</strong>
+        {{ playerData.caretaker_name }}
+      </p>
+      <p>
+        <strong>Email del Representante:</strong>
+        {{ playerData.caretaker_email }}
+      </p>
+    </div>
+
+    <!-- Dropdown para seleccionar juego -->
+    <div class="game-select">
+      <span>Selecciona un Juego</span>
+      <p-dropdown
+        [options]="games"
+        [(ngModel)]="selectedGame"
+        optionLabel="label"
+        placeholder="Selecciona Juego"
+        appendTo="body"
+        (onChange)="onGameSelect()"
+      ></p-dropdown>
+    </div>
+  </div>
+
+  <!-- Gráficas y datos -->
+  <div *ngIf="selectedGame" class="chart-container">
+    <app-bar-chart
+      [title]="'Puntaje por Nivel'"
+      [data]="levelGradesData"
+      [color]="'#E3B4FC'"
+      [data_label]="'Nivel de Rendimiento'"
+      [labels]="levelGradesLabels"
+    ></app-bar-chart>
+
+    <app-bar-chart
+      [title]="'Tiempo por Nivel'"
+      [data]="levelTimesData"
+      [color]="'#FFB6C1'"
+      [data_label]="'Tiempo en segundos'"
+      [labels]="levelTimesLabels"
+    ></app-bar-chart>
+
+    <app-stacked-chart
+      [title]="'Estados por Nivel'"
+      [data]="levelStatesData"
+      [labels]="levelStatesLabels"
+    ></app-stacked-chart>
+
+    <app-stacked-chart
+      [title]="'Estados por Historia'"
+      [data]="storyStatesData"
+      [labels]="storyStatesLabels"
+    ></app-stacked-chart>
+
+    <app-bar-chart
+      [title]="'Tiempo por Historia'"
+      [data]="storyTimesData"
+      [color]="'#ADD8E6'"
+      [data_label]="'Tiempo en segundos'"
+      [labels]="storyTimesLabels"
+    ></app-bar-chart>
+  </div>
+</div>

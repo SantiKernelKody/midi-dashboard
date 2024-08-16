@@ -44,6 +44,7 @@
     *ngIf="barChartData1"
     [data]="barChartData1.data"
     [labels]="barChartData1.labels"
+    [data_label]="'Nivel de Rendimiento'"
     [title]="'Puntaje Promedio por Nivel'"
     [color]="'#E3B4FC'"
   ></app-bar-chart>
@@ -52,6 +53,7 @@
     *ngIf="barChartData2"
     [data]="barChartData2.data"
     [labels]="barChartData2.labels"
+    [data_label]="'Tiempo en segundos'"
     [title]="'Tiempo Promedio por Nivel'"
     [color]="'#FFCE56'"
   ></app-bar-chart>

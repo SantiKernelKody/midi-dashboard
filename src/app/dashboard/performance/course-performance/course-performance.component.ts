@@ -85,6 +85,9 @@ export class CoursePerformanceComponent {
       this.games = games.map((game: { name: any; id: any; }) => ({ label: game.name, value: game.id }));
     });
   }
+  getLink(): string {
+    return `/dashboard/rendimiento/jugador`;
+  }
   goBack(): void {
     this.router.navigate(['/dashboard/rendimiento/school']);
   }

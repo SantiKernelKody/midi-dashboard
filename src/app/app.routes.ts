@@ -13,7 +13,7 @@ export const routes: Routes = [
         component: LoginComponent
     },
     {
-        path: 'signup/:role',
+        path: 'signup/:hash',
         component: SignupComponent
     },
     {

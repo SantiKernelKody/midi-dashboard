@@ -61,6 +61,7 @@
         <app-bar-chart
           [title]="'Puntaje por Nivel'"
           [color]="'#E3B4FC'"
+          [data_label]="'Nivel de Rendimiento'"
           [data]="levelGradesData"
           [labels]="levelGradesLabels"
         ></app-bar-chart>
@@ -77,6 +78,7 @@
         <app-bar-chart
           [title]="'Tiempo por Nivel'"
           [color]="'#FFB6C1'"
+          [data_label]="'Tiempo en segundos'"
           [data]="levelTimesData"
           [labels]="levelTimesLabels"
         ></app-bar-chart>
@@ -100,6 +102,7 @@
           [title]="'Tiempo por Historia'"
           [color]="'#ADD8E6'"
           [data]="storyTimesData"
+          [data_label]="'Tiempo en segundos'"
           [labels]="storyTimesLabels"
         ></app-bar-chart>
       </div>

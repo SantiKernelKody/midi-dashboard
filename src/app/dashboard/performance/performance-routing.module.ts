@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'school', pathMatch: 'full' },
   { path: 'school', component: SchoolPerformanceComponent },
   { path: 'curso/:school_id/:course_id', component: CoursePerformanceComponent },
-  { path: 'child', component: ChildPerformanceComponent }
+  { path: 'jugador/:kid_id', component: ChildPerformanceComponent }
 
 
 ];

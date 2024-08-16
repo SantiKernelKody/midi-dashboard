@@ -16,7 +16,7 @@ import { RolePipe } from '../role.pipe';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
-  role!: string;
+  hash!: string;
   firstName: string = '';
   lastName: string = '';
   email: string = '';
@@ -28,10 +28,8 @@ export class SignupComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.role = params['role'];
-      if (!this.validRoles.includes(this.role)) {
-        this.router.navigate(['']);
-      }
+      this.hash = params['hash'];
+
     });
   }
 

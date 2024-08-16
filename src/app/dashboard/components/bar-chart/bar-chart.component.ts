@@ -12,7 +12,8 @@ import { ChartModule } from 'primeng/chart';
 export class ChartBarComponent implements OnChanges {
   @Input() data: number[] = [];
   @Input() labels: string[] = [];
-  @Input() title: string = "Puntaje";
+  @Input() title: string = "Promedio de puntaje";
+  @Input() data_label: string = "Puntaje";
   @Input() color: string = "#42A5F5";
 
   chartData: any;
@@ -29,7 +30,7 @@ export class ChartBarComponent implements OnChanges {
       labels: this.labels,
       datasets: [
         {
-          label: this.title,
+          label: this.data_label,
           backgroundColor: this.color,
           borderColor: '#1E88E5',
           data: this.data

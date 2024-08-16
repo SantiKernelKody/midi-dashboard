@@ -33,3 +33,7 @@ h4, tr th{
     padding: 8px;
   }
   
+  .table-title{
+    margin-bottom: 10px;
+    font-weight: 600;
+  }

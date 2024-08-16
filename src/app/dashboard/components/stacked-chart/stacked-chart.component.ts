@@ -11,6 +11,7 @@ import { ChartModule } from 'primeng/chart';
 export class StackedChartComponent implements OnChanges {
   @Input() data: { label: string, data: number[], backgroundColor: string }[] = [];
   @Input() labels: string[] = [];
+  @Input() title: string = "Promedio de puntaje";
 
   chartData: any;
   chartOptions: any;

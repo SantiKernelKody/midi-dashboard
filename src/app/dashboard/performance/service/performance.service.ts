@@ -51,5 +51,16 @@ export class PerformanceService {
             }
         });
     }
+    getKidData(playerId: number): Observable<any> {
+        return this.http.get(`${this.baseUrl}/get_kid_data`, {
+            params: { player_id: playerId.toString() }
+        });
+    }
+
+    getKidPerformance(playerId: number, gameId: number): Observable<any> {
+        return this.http.get(`${this.baseUrl}/get_kid_performance`, {
+            params: { player_id: playerId.toString(), game_id: gameId.toString() }
+        });
+    }
 
 }
