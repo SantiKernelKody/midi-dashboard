@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { ToastService } from '../../../services/toast.service';
 import { UserService } from '../../service/user.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-change-password',
   standalone: true,
-  imports: [],
+  imports: [ButtonModule, InputTextModule, FormsModule, CommonModule],
   templateUrl: './change-password.component.html',
   styleUrl: './change-password.component.css'
 })

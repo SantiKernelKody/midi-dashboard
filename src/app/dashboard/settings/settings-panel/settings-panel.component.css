@@ -1,0 +1,34 @@
+.settings-container {
+    display: flex;
+  }
+  
+  .settings-sidebar {
+    width: 200px;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .settings-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .settings-sidebar ul li {
+    margin-bottom: 10px;
+  }
+  
+  .settings-sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .settings-sidebar ul li a.active-link {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .settings-content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  

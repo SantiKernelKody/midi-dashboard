@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GeneralService } from '../../general/service/general.service';
 import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,13 +10,13 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class HeaderComponent {
   userItems = [
-    { label: 'Settings', icon: 'pi pi-cog' },
+    { label: 'Settings', icon: 'pi pi-cog', command: () => this.goSettings() },
     { label: 'Logout', icon: 'pi pi-sign-out', command: () => this.logout() }
   ];
   userName: string = '';
   userRole: string = '';
 
-  constructor(private userService: GeneralService, private authService: AuthService) { }
+  constructor(private userService: GeneralService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.userService.getUserInfo().subscribe(userInfo => {
@@ -25,5 +26,8 @@ export class HeaderComponent {
   }
   logout(): void {
     this.authService.logout();
+  }
+  goSettings(): void {
+    this.router.navigate(['/dashboard/settings']);
   }
 }

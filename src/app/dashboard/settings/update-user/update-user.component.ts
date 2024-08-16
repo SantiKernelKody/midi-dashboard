@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { ToastService } from '../../../services/toast.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-update-user',
   standalone: true,
-  imports: [],
+  imports: [ButtonModule, InputTextModule, FormsModule, CommonModule],
   templateUrl: './update-user.component.html',
   styleUrl: './update-user.component.css'
 })

@@ -11,6 +11,8 @@ import { ButtonModule } from 'primeng/button';
 import { GeneralComponent } from './general/general.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from '../../auth.interceptor';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 @NgModule({
@@ -26,7 +28,10 @@ import { AuthInterceptor } from '../../auth.interceptor';
     MenuModule,
     ButtonModule,
     HttpClientModule,
-    GeneralComponent
+    GeneralComponent,
+    InputTextModule,
+    FormsModule,
+
   ]
 })
 export class DashboardModule { }

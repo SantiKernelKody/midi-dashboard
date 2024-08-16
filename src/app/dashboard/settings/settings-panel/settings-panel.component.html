@@ -1,0 +1,19 @@
+<div class="settings-container">
+  <div class="settings-sidebar">
+    <ul>
+      <li>
+        <a [routerLink]="['update-user']" routerLinkActive="active-link"
+          >Actualizar Datos</a
+        >
+      </li>
+      <li>
+        <a [routerLink]="['change-password']" routerLinkActive="active-link"
+          >Cambiar Contraseña</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="settings-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,1 +1,63 @@
-<p>update-user works!</p>
+<div class="update-user-container">
+  <h2>Actualizar Datos del Usuario</h2>
+  <form (ngSubmit)="onSubmit()" #updateUserForm="ngForm">
+    <div class="form-field">
+      <label for="name">Nombre</label>
+      <input
+        pInputText
+        id="name"
+        [(ngModel)]="name"
+        name="name"
+        required
+        #nameModel="ngModel"
+      />
+      <div *ngIf="nameModel.invalid && (nameModel.dirty || nameModel.touched)">
+        <small class="error-text">El nombre es requerido.</small>
+      </div>
+    </div>
+    <div class="form-field">
+      <label for="lastName">Apellido</label>
+      <input
+        pInputText
+        id="lastName"
+        [(ngModel)]="last_name"
+        name="last_name"
+        required
+        #lastNameModel="ngModel"
+      />
+      <div
+        *ngIf="
+          lastNameModel.invalid &&
+          (lastNameModel.dirty || lastNameModel.touched)
+        "
+      >
+        <small class="error-text">El apellido es requerido.</small>
+      </div>
+    </div>
+    <div class="form-field">
+      <label for="email">Correo Electrónico</label>
+      <input
+        pInputText
+        id="email"
+        [(ngModel)]="email"
+        name="email"
+        required
+        type="email"
+        #emailModel="ngModel"
+      />
+      <div
+        *ngIf="emailModel.invalid && (emailModel.dirty || emailModel.touched)"
+      >
+        <small class="error-text"
+          >Se requiere un correo electrónico válido.</small
+        >
+      </div>
+    </div>
+    <p-button
+      label="Actualizar"
+      type="submit"
+      class="p-button-primary"
+      [disabled]="updateUserForm.invalid"
+    ></p-button>
+  </form>
+</div>
