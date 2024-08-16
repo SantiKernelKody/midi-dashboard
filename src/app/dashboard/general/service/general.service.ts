@@ -10,6 +10,9 @@ export class GeneralService {
 
     constructor(private http: HttpClient) { }
 
+    getUserInfo(): Observable<any> {
+        return this.http.get(`${this.baseUrl}/get_user_info`);
+    }
     getGames(): Observable<any> {
         return this.http.get(`${this.baseUrl}/games`);
     }

@@ -5,7 +5,6 @@
   margin-right: 20px;
 }
 ::ng-deep .p-button{
-  width: 150px ;
   background: #4789EE;
   border: 1px solid #4789EE;
 }
@@ -14,6 +13,7 @@
 
 }
 .header-container{
+  
   background-color: #C5CCDE;
   padding: 10px 0;
 }

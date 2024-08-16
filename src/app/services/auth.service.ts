@@ -12,6 +12,26 @@ export class AuthService {
     private tokenKey = 'access_token';
 
     constructor(private http: HttpClient, private router: Router) { }
+    verifySignupToken(token: string): Observable<any> {
+        return this.http.get(`${this.authUrl}/verify_signup_token`, { params: { token } });
+    }
+
+    signup(signupData: any): Observable<any> {
+        return this.http.post(`${this.authUrl}/signup`, signupData);
+    }
+    requestResetPassword(email: string): Observable<any> {
+        return this.http.post(`${this.authUrl}/request_reset_password`, { email });
+    }
+
+    verifyResetPasswordToken(token: string): Observable<any> {
+        return this.http.get(`${this.authUrl}/verify_reset_password_token`, {
+            params: { token }
+        });
+    }
+
+    resetPassword(token: string, newPassword: string): Observable<any> {
+        return this.http.post(`${this.authUrl}/reset_password`, { token, new_password: newPassword });
+    }
 
     login(username: string, password: string, role: string): Observable<any> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

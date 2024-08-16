@@ -6,6 +6,8 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ROLES } from '../shared/constants';
 import { RolePipe } from '../role.pipe';
+import { AuthService } from '../services/auth.service';
+import { ToastService } from '../services/toast.service';
 
 
 @Component({
@@ -16,33 +18,65 @@ import { RolePipe } from '../role.pipe';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
-  hash!: string;
+  token: string = '';
   firstName: string = '';
   lastName: string = '';
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
-  validRoles = [ROLES.ADMIN, ROLES.TEACHER, ROLES.PARENT];
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private toastService: ToastService, // Inyectar el ToastService
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.hash = params['hash'];
-
-    });
+    this.token = this.route.snapshot.paramMap.get('token')!;
+    this.authService.verifySignupToken(this.token).subscribe(
+      (userData: { name: string; last_name: string; email: string; }) => {
+        this.firstName = userData.name;
+        this.lastName = userData.last_name;
+        this.email = userData.email;
+      },
+      (error: any) => {
+        console.error('Token verification failed', error);
+        this.toastService.showError('Error', 'Token verification failed. Please try again.');
+        this.router.navigate(['/login']); // Redirigir si el token no es válido
+      }
+    );
   }
 
   onSubmit(): void {
     if (this.password !== this.confirmPassword) {
-      alert('Passwords do not match!');
+      this.toastService.showError('Error', 'Passwords do not match');
       return;
     }
-    console.log('First Name:', this.firstName);
-    console.log('Last Name:', this.lastName);
-    console.log('Email:', this.email);
-    console.log('Password:', this.password);
-    console.log('Confirm Password:', this.confirmPassword);
-    // Aquí puedes agregar la lógica adicional para manejar el registro
+
+    const signupData = {
+      token: this.token,
+      name: this.firstName,
+      last_name: this.lastName,
+      rawpassword: this.password,
+      email: this.email
+    };
+
+    this.authService.signup(signupData).subscribe(
+      (response: { access_token: string; }) => {
+        // Eliminar el token de acceso del localStorage si existe
+        localStorage.removeItem('accessToken');
+
+        // Redirigir al login
+        this.router.navigate(['/login']);
+
+        // Mostrar mensaje de éxito
+        this.toastService.showSuccess('Success', 'You have successfully signed up! Please log in to continue.');
+      },
+      (error: any) => {
+        console.error('Signup failed', error);
+        this.toastService.showError('Error', 'Signup failed. Please try again.');
+      }
+    );
   }
 }

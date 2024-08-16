@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { GeneralService } from '../../general/service/general.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,9 +8,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  userName = 'John Doe'; // Puedes cambiar esto por el nombre del usuario actual
   userItems = [
     { label: 'Settings', icon: 'pi pi-cog' },
-    { label: 'Logout', icon: 'pi pi-sign-out' }
+    { label: 'Logout', icon: 'pi pi-sign-out', command: () => this.logout() }
   ];
+  userName: string = '';
+  userRole: string = '';
+
+  constructor(private userService: GeneralService, private authService: AuthService) { }
+
+  ngOnInit(): void {
+    this.userService.getUserInfo().subscribe(userInfo => {
+      this.userName = userInfo.name;
+      this.userRole = userInfo.role_name;
+    });
+  }
+  logout(): void {
+    this.authService.logout();
+  }
 }
