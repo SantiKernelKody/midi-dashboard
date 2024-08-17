@@ -1,22 +1,22 @@
-import { Component } from '@angular/core';
-import { SchoolManagementService } from '../../school-management.service';
-import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { ToastService } from '../../../../services/toast.service';
-import { Router } from '@angular/router';
+import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
+import { ToastService } from '../../../../services/toast.service';
+import { SchoolManagementService } from '../../school-management.service';
 
 @Component({
-  selector: 'app-school-list',
+  selector: 'app-course-list',
   standalone: true,
   imports: [ButtonModule, InputTextModule, FormsModule, CommonModule, TableModule, TabViewModule],
-  templateUrl: './school-list.component.html',
-  styleUrl: './school-list.component.css'
+  templateUrl: './course-list.component.html',
+  styleUrl: './course-list.component.css'
 })
-export class SchoolListComponent {
+export class CourseListComponent {
   activeTab: number = 0; // Controla cuál tab está activo
   courses: any[] = [];
   teachers: any[] = [];

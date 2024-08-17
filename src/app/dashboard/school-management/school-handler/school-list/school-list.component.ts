@@ -62,6 +62,6 @@ export class SchoolListComponent {
     }
   }
   goToCourses(schoolId: number): void {
-    this.router.navigate(['/dashboard/gestion-escuela/course-handler']);
+    this.router.navigate(['/dashboard/gestion-escuela/course-handler/course-list']);
   }
 }
