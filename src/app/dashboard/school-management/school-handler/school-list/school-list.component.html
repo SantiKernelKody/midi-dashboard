@@ -11,15 +11,17 @@
       <tr>
         <th>Nombre</th>
         <th>Código</th>
-        <!-- Nueva columna para el código -->
         <th>Acciones</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-school>
       <tr>
-        <td>{{ school.name }}</td>
+        <td>
+          <a (click)="goToCourses(school.id)" class="school-link">{{
+            school.name
+          }}</a>
+        </td>
         <td>{{ school.code }}</td>
-        <!-- Mostrar el código de la escuela -->
         <td>
           <button
             pButton

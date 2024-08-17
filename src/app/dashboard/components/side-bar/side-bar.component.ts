@@ -10,7 +10,7 @@ export class SideBarComponent {
     { label: 'General', icon: 'pi pi-cog', route: '/dashboard/general' },
     { label: 'Rendimiento', icon: 'pi pi-chart-line', route: '/dashboard/rendimiento' },
     { label: 'Gestion escolar', icon: 'pi pi-graduation-cap', route: '/dashboard/gestion-escuela/school-handler' },
-    { label: 'Juegos', icon: 'pi pi-crown', route: '/dashboard/games' },
+    /*{ label: 'Juegos', icon: 'pi pi-crown', route: '/dashboard/games' },*/
   ];
   constructor(private router: Router) { }
   navigateTo(route: string): void {

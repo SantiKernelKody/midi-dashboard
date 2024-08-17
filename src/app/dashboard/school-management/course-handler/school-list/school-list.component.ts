@@ -60,7 +60,7 @@ export class SchoolListComponent {
   }
 
   createTeacher(): void {
-    this.router.navigate(['/course-handler/create-teacher']);
+    this.router.navigate(['/dashboard/gestion-escuela/course-handler/create-teacher']);
   }
 
   editCourse(courseId: number): void {

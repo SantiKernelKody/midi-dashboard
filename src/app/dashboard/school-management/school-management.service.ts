@@ -39,6 +39,9 @@ export class SchoolManagementService {
   getTeachers(): Observable<any> {
     return this.http.get(`${this.baseUrl}/get_teachers`);
   }
+  createTeacher(teacherData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/create_teacher`, teacherData);
+  }
 
   deleteTeacher(teacherId: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/delete_teacher/${teacherId}`);

@@ -1,1 +1,45 @@
-<p>create-teacher works!</p>
+<div class="teacher-create-container">
+  <h2>Crear Profesor</h2>
+  <button
+    pButton
+    label="Regresar"
+    class="p-button-secondary"
+    icon="pi pi-arrow-left"
+    (click)="goBack()"
+  ></button>
+
+  <form (ngSubmit)="onSubmit()" #createTeacherForm="ngForm">
+    <div class="form-field">
+      <label for="name">Nombre</label>
+      <input pInputText id="name" [(ngModel)]="name" name="name" required />
+    </div>
+    <div class="form-field">
+      <label for="lastName">Apellido</label>
+      <input
+        pInputText
+        id="lastName"
+        [(ngModel)]="lastName"
+        name="lastName"
+        required
+      />
+    </div>
+    <div class="form-field">
+      <label for="email">Correo Electrónico</label>
+      <input
+        pInputText
+        id="email"
+        [(ngModel)]="email"
+        name="email"
+        type="email"
+        required
+      />
+    </div>
+    <button
+      pButton
+      label="Crear Profesor"
+      type="submit"
+      class="p-button-primary"
+      [disabled]="createTeacherForm.invalid"
+    ></button>
+  </form>
+</div>
