@@ -1,0 +1,81 @@
+.school-list-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .school-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .school-list-header h2 {
+    margin: 0;
+  }
+  
+  .school-list-header button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .school-list-header button:hover {
+    background-color: #0056b3;
+  }
+  
+  .school-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .school-table th,
+  .school-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .school-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .school-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .school-table .action-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .school-table .action-buttons button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .school-table .action-buttons button:hover {
+    background-color: #0056b3;
+  }
+  
+  .school-table .action-buttons button.delete {
+    background-color: #dc3545;
+  }
+  
+  .school-table .action-buttons button.delete:hover {
+    background-color: #c82333;
+  }
+  
+  .action-button{
+    margin: 0 10px;
+  }

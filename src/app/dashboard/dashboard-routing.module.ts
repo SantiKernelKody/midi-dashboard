@@ -12,6 +12,7 @@ const routes: Routes = [
       { path: 'general', component: GeneralComponent },
       { path: 'rendimiento', loadChildren: () => import('./performance/performance.module').then(m => m.PerformanceModule) },
       { path: 'juegos', loadChildren: () => import('./games/games.module').then(m => m.GamesModule) },
+      { path: 'gestion-escuela', loadChildren: () => import('./school-management/school-management.module').then(m => m.SchoolManagementModule) },
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) }
     ]
   }

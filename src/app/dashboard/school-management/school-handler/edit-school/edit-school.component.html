@@ -1,0 +1,40 @@
+<div class="school-edit-container">
+  <div class="top-header">
+    <button
+      pButton
+      label="Regresar"
+      class="p-button-secondary"
+      icon="pi pi-arrow-left"
+      (click)="goBack()"
+    ></button>
+    <h2>Editar Escuela</h2>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" #editSchoolForm="ngForm" class="form-container">
+    <div class="form-field">
+      <label for="name">Nombre de la Escuela</label>
+      <input pInputText id="name" [(ngModel)]="name" name="name" required />
+    </div>
+    <div class="form-field">
+      <label for="code">Código</label>
+      <input pInputText id="code" [(ngModel)]="code" name="code" required />
+    </div>
+    <div class="form-field">
+      <label for="description">Descripción</label>
+      <textarea
+        pInputTextarea
+        id="description"
+        [(ngModel)]="description"
+        name="description"
+        required
+      ></textarea>
+    </div>
+    <button
+      pButton
+      label="Guardar Cambios"
+      type="submit"
+      class="p-button-primary"
+      [disabled]="editSchoolForm.invalid"
+    ></button>
+  </form>
+</div>
