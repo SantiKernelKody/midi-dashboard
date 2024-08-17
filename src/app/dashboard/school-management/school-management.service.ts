@@ -28,4 +28,19 @@ export class SchoolManagementService {
   deleteSchool(schoolId: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/delete_school/${schoolId}`);
   }
+
+  getCourses(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/get_courses`);
+  }
+
+  deleteCourse(courseId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/delete_course/${courseId}`);
+  }
+  getTeachers(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/get_teachers`);
+  }
+
+  deleteTeacher(teacherId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/delete_teacher/${teacherId}`);
+  }
 }

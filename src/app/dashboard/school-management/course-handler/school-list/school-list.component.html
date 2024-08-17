@@ -1,0 +1,70 @@
+<div class="school-list-container">
+  <h2>Gestión de Cursos y Profesores</h2>
+  <p-tabView [(activeIndex)]="activeTab">
+    <p-tabPanel header="Lista de Cursos">
+      <button
+        pButton
+        label="Crear Curso"
+        class="p-button-success"
+        (click)="createCourse()"
+      ></button>
+      <p-table [value]="courses">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nombre</th>
+            <th>Acciones</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-course>
+          <tr>
+            <td>{{ course.subject_name }}</td>
+            <td>
+              <button
+                pButton
+                icon="pi pi-pencil"
+                class="p-button-warning"
+                (click)="editCourse(course.id)"
+              ></button>
+              <button
+                pButton
+                icon="pi pi-trash"
+                class="p-button-danger"
+                (click)="deleteCourse(course.id)"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-tabPanel>
+
+    <p-tabPanel header="Lista de Profesores">
+      <button
+        pButton
+        label="Crear Profesor"
+        class="p-button-success"
+        (click)="createTeacher()"
+      ></button>
+      <p-table [value]="teachers">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nombre</th>
+            <th>Acciones</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-teacher>
+          <tr>
+            <td>{{ teacher.name }}</td>
+            <td>
+              <button
+                pButton
+                icon="pi pi-trash"
+                class="p-button-danger"
+                (click)="deleteTeacher(teacher.id)"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-tabPanel>
+  </p-tabView>
+</div>
