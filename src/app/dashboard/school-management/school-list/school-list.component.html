@@ -1,0 +1,35 @@
+<div class="school-list-container">
+  <h2>Lista de Escuelas</h2>
+  <p-button
+    label="Crear Escuela"
+    icon="pi pi-plus"
+    (click)="onCreate()"
+  ></p-button>
+
+  <p-table
+    [value]="schools"
+    [paginator]="true"
+    [rows]="10"
+    [totalRecords]="totalRecords"
+    [lazy]="true"
+    (onLazyLoad)="loadSchools($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Acciones</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-school>
+      <tr>
+        <td>{{ school.name }}</td>
+        <td>{{ school.address }}</td>
+        <td>
+          <p-button icon="pi pi-pencil" (click)="onEdit(school)"></p-button>
+          <p-button icon="pi pi-trash" (click)="onDelete(school.id)"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
