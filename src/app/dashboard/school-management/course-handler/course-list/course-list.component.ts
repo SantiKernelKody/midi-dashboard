@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
@@ -20,21 +20,26 @@ export class CourseListComponent {
   activeTab: number = 0; // Controla cuál tab está activo
   courses: any[] = [];
   teachers: any[] = [];
+  schoolId: number = 0; // Para almacenar el school_id recibido
 
   constructor(
     private schoolService: SchoolManagementService,
     private toastService: ToastService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
-
   ngOnInit(): void {
+    // Obtener el school_id desde la ruta
+    this.schoolId = +this.route.snapshot.paramMap.get('school_id')!;
+
+    // Cargar cursos y profesores asociados a la escuela
     this.loadCourses();
     this.loadTeachers();
   }
 
   loadCourses(): void {
-    this.schoolService.getCourses().subscribe(
+    this.schoolService.getCourses(this.schoolId).subscribe(
       (data) => {
         this.courses = data;
       },
@@ -45,7 +50,7 @@ export class CourseListComponent {
   }
 
   loadTeachers(): void {
-    this.schoolService.getTeachers().subscribe(
+    this.schoolService.getTeachers(this.schoolId).subscribe(
       (data) => {
         this.teachers = data;
       },
@@ -56,15 +61,15 @@ export class CourseListComponent {
   }
 
   createCourse(): void {
-    this.router.navigate(['/course-handler/create-course']);
+    this.router.navigate([`/dashboard/gestion-escuela/course-handler/create-course`, this.schoolId]);
   }
 
   createTeacher(): void {
-    this.router.navigate(['/dashboard/gestion-escuela/course-handler/create-teacher']);
+    this.router.navigate([`/dashboard/gestion-escuela/course-handler/create-teacher`, this.schoolId]);
   }
 
   editCourse(courseId: number): void {
-    this.router.navigate(['/course-handler/edit-course', courseId]);
+    this.router.navigate([`/course-handler/edit-course`, courseId, { school_id: this.schoolId }]);
   }
 
   deleteCourse(courseId: number): void {

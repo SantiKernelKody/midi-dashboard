@@ -7,10 +7,10 @@ import { EditCourseComponent } from './edit-course/edit-course.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'school-list', pathMatch: 'full' },
-  { path: 'course-list', component: CourseListComponent },
-  { path: 'create-course', component: CreateCourseComponent },
-  { path: 'edit-course/:id', component: EditCourseComponent },
-  { path: 'create-teacher', component: CreateTeacherComponent },
+  { path: 'course-list/:school_id', component: CourseListComponent },
+  { path: 'create-course/:school_id', component: CreateCourseComponent },
+  { path: 'edit-course/:course_id', component: EditCourseComponent },
+  { path: 'create-teacher/:school_id', component: CreateTeacherComponent },
 ];
 
 @NgModule({

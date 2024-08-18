@@ -29,18 +29,22 @@ export class SchoolManagementService {
     return this.http.delete(`${this.baseUrl}/delete_school/${schoolId}`);
   }
 
-  getCourses(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/get_courses`);
+  getCourses(schoolId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/get_courses/${schoolId}`);
   }
 
   deleteCourse(courseId: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/delete_course/${courseId}`);
   }
-  getTeachers(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/get_teachers`);
+  getTeachers(schoolId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/get_teachers/${schoolId}`);
   }
-  createTeacher(teacherData: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/create_teacher`, teacherData);
+
+  createTeacher(schoolId: number, teacherData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/create_teacher?school_id=${schoolId}`, teacherData);
+  }
+  createCourse(schoolId: number, courseData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/create_course/${schoolId}`, courseData);
   }
 
   deleteTeacher(teacherId: number): Observable<any> {

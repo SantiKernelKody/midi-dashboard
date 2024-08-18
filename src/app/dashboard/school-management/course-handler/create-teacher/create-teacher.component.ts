@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SchoolManagementService } from '../../school-management.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from '../../../../services/toast.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -19,12 +19,19 @@ export class CreateTeacherComponent {
   name: string = '';
   lastName: string = '';
   email: string = '';
+  schoolId: number = 0;
 
   constructor(
     private schoolService: SchoolManagementService,
     private router: Router,
+    private route: ActivatedRoute,
     private toastService: ToastService
   ) { }
+
+  ngOnInit(): void {
+    // Obtener el school_id desde la ruta
+    this.schoolId = +this.route.snapshot.paramMap.get('school_id')!;
+  }
 
   onSubmit(): void {
     const teacherData = {
@@ -33,10 +40,10 @@ export class CreateTeacherComponent {
       email: this.email,
     };
 
-    this.schoolService.createTeacher(teacherData).subscribe(
+    this.schoolService.createTeacher(this.schoolId, teacherData).subscribe(
       () => {
         this.toastService.showSuccess('Éxito', 'Profesor creado con éxito');
-        this.router.navigate(['/dashboard/gestion-escuela/course-handler']);
+        this.router.navigate(['/dashboard/gestion-escuela/course-handler/course-list', this.schoolId]);
       },
       (error) => {
         this.toastService.showError('Error', 'Error al crear el profesor');
@@ -45,6 +52,6 @@ export class CreateTeacherComponent {
   }
 
   goBack(): void {
-    this.router.navigate(['/dashboard/gestion-escuela/course-handler']);
+    this.router.navigate(['/dashboard/gestion-escuela/course-handler/course-list', this.schoolId]);
   }
 }

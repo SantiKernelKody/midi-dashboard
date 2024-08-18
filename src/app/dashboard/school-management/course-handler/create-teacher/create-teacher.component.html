@@ -7,10 +7,9 @@
     icon="pi pi-arrow-left"
     (click)="goBack()"
   ></button>
-
   <form (ngSubmit)="onSubmit()" #createTeacherForm="ngForm">
     <div class="form-field">
-      <label for="name">Nombre</label>
+      <label for="name">Nombre del Profesor</label>
       <input pInputText id="name" [(ngModel)]="name" name="name" required />
     </div>
     <div class="form-field">
@@ -30,8 +29,8 @@
         id="email"
         [(ngModel)]="email"
         name="email"
-        type="email"
         required
+        type="email"
       />
     </div>
     <button
