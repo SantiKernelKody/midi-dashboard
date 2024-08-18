@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { ROLES } from '../shared/constants';
 
 @Injectable({
     providedIn: 'root'
@@ -70,6 +71,15 @@ export class AuthService {
     }
     getUserRole(): string | null {
         return localStorage.getItem("role");
+    }
+    isAdmin(): boolean {
+        return this.getUserRole() === ROLES.ADMIN;
+    }
+    isParent(): boolean {
+        return this.getUserRole() === ROLES.PARENT;
+    }
+    isTeacher(): boolean {
+        return this.getUserRole() === ROLES.TEACHER;
     }
 
     private handleError(error: HttpErrorResponse): Observable<never> {

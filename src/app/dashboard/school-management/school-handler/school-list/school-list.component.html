@@ -5,13 +5,14 @@
     label="Crear Escuela"
     class="p-button-success"
     (click)="createSchool()"
+    *ngIf="!isTeacher()"
   ></button>
   <p-table [value]="schools">
     <ng-template pTemplate="header">
       <tr>
         <th>Nombre</th>
         <th>Código</th>
-        <th>Acciones</th>
+        <th *ngIf="!isTeacher()">Acciones</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-school>
@@ -22,7 +23,7 @@
           }}</a>
         </td>
         <td>{{ school.code }}</td>
-        <td>
+        <td *ngIf="!isTeacher()">
           <button
             pButton
             icon="pi pi-pencil"

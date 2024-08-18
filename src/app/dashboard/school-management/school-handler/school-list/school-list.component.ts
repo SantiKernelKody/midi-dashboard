@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { ToastService } from '../../../../services/toast.service';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-school-list',
@@ -22,7 +23,8 @@ export class SchoolListComponent {
   constructor(
     private schoolService: SchoolManagementService,
     private router: Router,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -63,5 +65,8 @@ export class SchoolListComponent {
   }
   goToCourses(schoolId: number): void {
     this.router.navigate(['/dashboard/gestion-escuela/course-handler/course-list', schoolId]);
+  }
+  isTeacher(): boolean {
+    return this.authService.isTeacher();
   }
 }

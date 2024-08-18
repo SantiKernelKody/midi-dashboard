@@ -8,6 +8,7 @@ import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
 import { ToastService } from '../../../../services/toast.service';
 import { SchoolManagementService } from '../../school-management.service';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-course-list',
@@ -26,7 +27,8 @@ export class CourseListComponent {
     private schoolService: SchoolManagementService,
     private toastService: ToastService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -35,13 +37,16 @@ export class CourseListComponent {
 
     // Cargar cursos y profesores asociados a la escuela
     this.loadCourses();
-    this.loadTeachers();
+    if (this.authService.isAdmin()) {
+      this.loadTeachers();
+    }
   }
 
   loadCourses(): void {
     this.schoolService.getCourses(this.schoolId).subscribe(
       (data) => {
         this.courses = data;
+        console.log("Courses", this.courses);
       },
       (error) => {
         this.toastService.showError('Error', 'Error al cargar los cursos');
@@ -69,7 +74,7 @@ export class CourseListComponent {
   }
 
   editCourse(courseId: number): void {
-    this.router.navigate([`/course-handler/edit-course`, courseId, { school_id: this.schoolId }]);
+    this.router.navigate([`/dashboard/gestion-escuela/course-handler/edit-course`, courseId]);
   }
 
   deleteCourse(courseId: number): void {
@@ -98,5 +103,15 @@ export class CourseListComponent {
         }
       );
     }
+  }
+  goToPlayers(courseId: number): void {
+    this.router.navigate(['/dashboard/gestion-escuela/player-handler/player-list', courseId]);
+  }
+  shouldShowCreateCourseButton(): boolean {
+    return this.authService.isTeacher();
+  }
+
+  shouldShowTeacherTab(): boolean {
+    return this.authService.isAdmin();
   }
 }

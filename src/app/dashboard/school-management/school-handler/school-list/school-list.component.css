@@ -79,3 +79,8 @@
   .action-button{
     margin: 0 10px;
   }
+  .school-link {
+    text-decoration: underline;
+    color: #007bff;
+    cursor: pointer;
+  }

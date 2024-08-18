@@ -1,1 +1,39 @@
-<p>edit-course works!</p>
+<div class="course-edit-container">
+  <h2>Editar Curso</h2>
+  <button
+    pButton
+    label="Regresar"
+    class="p-button-secondary"
+    icon="pi pi-arrow-left"
+    (click)="goBack()"
+  ></button>
+  <form (ngSubmit)="onSubmit()" #editCourseForm="ngForm">
+    <div class="form-field">
+      <label for="subjectName">Nombre del Curso</label>
+      <input
+        pInputText
+        id="subjectName"
+        [(ngModel)]="subjectName"
+        name="subjectName"
+        required
+      />
+    </div>
+    <div class="form-field">
+      <label for="description">Descripción</label>
+      <textarea
+        pInputTextarea
+        id="description"
+        [(ngModel)]="description"
+        name="description"
+        required
+      ></textarea>
+    </div>
+    <button
+      pButton
+      label="Guardar Cambios"
+      type="submit"
+      class="p-button-primary"
+      [disabled]="editCourseForm.invalid"
+    ></button>
+  </form>
+</div>
