@@ -22,3 +22,12 @@
     width: fit-content;
   }
 
+.top-header{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+.back-button{
+    height: fit-content;
+}

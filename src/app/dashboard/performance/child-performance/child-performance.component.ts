@@ -4,7 +4,7 @@ import { GeneralService } from '../../general/service/general.service';
 import { PerformanceService } from '../service/performance.service';
 import { ChartBarComponent } from '../../components/bar-chart/bar-chart.component';
 import { StackedChartComponent } from '../../components/stacked-chart/stacked-chart.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 
@@ -37,7 +37,8 @@ export class ChildPerformanceComponent {
     private performanceService: PerformanceService,
     private generalService: GeneralService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -58,7 +59,7 @@ export class ChildPerformanceComponent {
     });
   }
   goBack(): void {
-    this.router.navigate(['/dashboard/rendimiento/school']);
+    this.location.back();
   }
 
   onGameSelect(): void {

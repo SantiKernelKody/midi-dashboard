@@ -1,5 +1,18 @@
 <div class="school-list-container">
-  <h2>Gestión de Cursos y Profesores</h2>
+  <div class="top-header">
+    <button
+      pButton
+      label="Regresar"
+      class="p-button-secondary back-button"
+      icon="pi pi-arrow-left"
+      (click)="goBack()"
+    ></button>
+    <div class="title-container">
+      <h2>Gestión de Cursos</h2>
+      <h2 *ngIf="shouldShowTeacherTab()">y Profesores</h2>
+    </div>
+  </div>
+
   <p-tabView [(activeIndex)]="activeTab">
     <p-tabPanel header="Lista de Cursos">
       <!-- Mostrar el botón solo si el usuario es teacher -->

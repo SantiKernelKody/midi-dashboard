@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastService } from '../../../../services/toast.service';
 import { SchoolManagementService } from '../../school-management.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -27,7 +27,8 @@ export class ListComponent {
     private schoolService: SchoolManagementService,
     private toastService: ToastService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -79,6 +80,8 @@ export class ListComponent {
       );
     }
   }
-
+  goBack(): void {
+    this.location.back();
+  }
 
 }

@@ -9,3 +9,21 @@ button{
     color: #007bff;
     cursor: pointer;
   }
+
+  .top-header{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+.back-button{
+    height: fit-content;
+}
+.top-header h2{
+    margin: 0;
+}
+.title-container{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}

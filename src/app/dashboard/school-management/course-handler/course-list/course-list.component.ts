@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -28,7 +28,8 @@ export class CourseListComponent {
     private toastService: ToastService,
     private router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -113,5 +114,8 @@ export class CourseListComponent {
 
   shouldShowTeacherTab(): boolean {
     return this.authService.isAdmin();
+  }
+  goBack(): void {
+    this.location.back();
   }
 }

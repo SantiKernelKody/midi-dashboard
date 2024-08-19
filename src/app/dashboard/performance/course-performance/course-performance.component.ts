@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PerformanceService } from '../service/performance.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
@@ -49,7 +49,8 @@ export class CoursePerformanceComponent {
     private route: ActivatedRoute,
     private router: Router,
     private performanceService: PerformanceService,
-    private generalService: GeneralService
+    private generalService: GeneralService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -89,7 +90,7 @@ export class CoursePerformanceComponent {
     return `/dashboard/rendimiento/jugador`;
   }
   goBack(): void {
-    this.router.navigate(['/dashboard/rendimiento/school']);
+    this.location.back();
   }
 
   allFiltersSelected(): boolean {
