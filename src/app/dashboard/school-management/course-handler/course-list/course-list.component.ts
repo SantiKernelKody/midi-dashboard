@@ -105,7 +105,7 @@ export class CourseListComponent {
     }
   }
   goToPlayers(courseId: number): void {
-    this.router.navigate(['/dashboard/gestion-escuela/player-handler/player-list', courseId]);
+    this.router.navigate(['/dashboard/gestion-escuela/player-handler/list', courseId]);
   }
   shouldShowCreateCourseButton(): boolean {
     return this.authService.isTeacher();

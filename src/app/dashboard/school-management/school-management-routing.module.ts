@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'course-handler',
     loadChildren: () => import('./course-handler/course-handler.module').then(m => m.CourseHandlerModule)
+  },
+  {
+    path: 'player-handler',
+    loadChildren: () => import('./player-handler/player-handler.module').then(m => m.PlayerHandlerModule)
   }
 ];
 

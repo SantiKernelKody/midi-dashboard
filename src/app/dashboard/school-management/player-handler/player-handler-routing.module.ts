@@ -5,7 +5,8 @@ import { CreateComponent } from './create/create.component';
 import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [
-  { path: '', component: ListComponent },
+  { path: '', redirectTo: 'list', pathMatch: 'full' },
+  { path: 'list/:courseId', component: ListComponent },
   { path: 'create/:courseId', component: CreateComponent },
   { path: 'update/:kidId', component: UpdateComponent },
 ];

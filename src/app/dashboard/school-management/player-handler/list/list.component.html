@@ -1,1 +1,55 @@
-<p>list works!</p>
+<div class="kid-list-container">
+  <h2>Lista de Estudiantes</h2>
+  <button
+    pButton
+    label="Crear Estudiante"
+    class="p-button-success create-button"
+    (click)="createKid()"
+  ></button>
+
+  <p-table
+    scrollable="true"
+    scrollHeight="400px"
+    [value]="kids"
+    [paginator]="true"
+    [rows]="pageSize"
+    [totalRecords]="totalItems"
+    [lazy]="true"
+    [loading]="loading"
+    (onLazyLoad)="loadKidsLazy($event)"
+    [first]="first"
+    [rowsPerPageOptions]="[5, 10, 25, 50]"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Etnia</th>
+        <th>Acciones</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-kid>
+      <tr>
+        <td>{{ kid.full_name }}</td>
+        <td>{{ kid.edad }}</td>
+        <td>{{ kid.ethnicity }}</td>
+        <td>
+          <button
+            pButton
+            icon="pi pi-pencil"
+            class="p-button-warning action-button"
+            (click)="editKid(kid.id)"
+          ></button>
+          <button
+            pButton
+            icon="pi pi-trash"
+            class="p-button-danger action-button"
+            (click)="deleteKid(kid.id)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -2,11 +2,15 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastService } from '../../../../services/toast.service';
 import { SchoolManagementService } from '../../school-management.service';
+import { CommonModule, Location } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-create',
   standalone: true,
-  imports: [],
+  imports: [ButtonModule, InputTextModule, FormsModule, CommonModule],
   templateUrl: './create.component.html',
   styleUrl: './create.component.css'
 })
@@ -22,7 +26,8 @@ export class CreateComponent {
     private schoolService: SchoolManagementService,
     private router: Router,
     private toastService: ToastService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -30,16 +35,21 @@ export class CreateComponent {
   }
 
   onSubmit(): void {
-    const kidData = {
+    const kidData: any = {
       full_name: this.fullName,
       edad: this.age,
       ethnicity: this.ethnicity,
     };
 
-    this.schoolService.createKid(this.courseId, kidData, this.parentEmail).subscribe(
+    // Solo agregar el correo del tutor si no está vacío
+    if (this.parentEmail.trim()) {
+      kidData.caretaker_email = this.parentEmail;
+    }
+
+    this.schoolService.createKid(this.courseId, kidData).subscribe(
       () => {
         this.toastService.showSuccess('Éxito', 'Estudiante creado con éxito');
-        this.router.navigate([`/dashboard/gestion-escuela/player-handler`, this.courseId]);
+        this.location.back();
       },
       (error) => {
         this.toastService.showError('Error', 'Error al crear al estudiante');
@@ -48,6 +58,6 @@ export class CreateComponent {
   }
 
   goBack(): void {
-    this.router.navigate([`/dashboard/gestion-escuela/player-handler`, this.courseId]);
+    this.location.back();
   }
 }

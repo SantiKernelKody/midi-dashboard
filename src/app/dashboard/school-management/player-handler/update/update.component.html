@@ -1,1 +1,82 @@
-<p>update works!</p>
+<div class="kid-edit-container">
+  <h2>Editar Estudiante</h2>
+  <button
+    pButton
+    label="Regresar"
+    class="p-button-secondary"
+    icon="pi pi-arrow-left"
+    (click)="goBack()"
+  ></button>
+  <form (ngSubmit)="onSubmit()" #editKidForm="ngForm">
+    <div class="form-field">
+      <label for="fullName">Nombre Completo</label>
+      <input
+        pInputText
+        id="fullName"
+        [(ngModel)]="fullName"
+        name="fullName"
+        required
+      />
+    </div>
+    <div class="form-field">
+      <label for="age">Edad</label>
+      <input
+        pInputText
+        id="age"
+        [(ngModel)]="age"
+        name="age"
+        type="number"
+        required
+      />
+    </div>
+    <div class="form-field">
+      <label for="ethnicity">Etnia</label>
+      <input
+        pInputText
+        id="ethnicity"
+        [(ngModel)]="ethnicity"
+        name="ethnicity"
+        required
+      />
+    </div>
+    <div class="form-field">
+      <label for="caretakerName">Nombre del Tutor</label>
+      <input
+        pInputText
+        id="caretakerName"
+        [(ngModel)]="caretakerName"
+        name="caretakerName"
+        disabled
+      />
+    </div>
+    <div class="form-field caretaker-email-field">
+      <label for="caretakerEmail">Correo Electrónico del Tutor</label>
+      <div class="caretaker-email-container">
+        <input
+          pInputText
+          id="caretakerEmail"
+          [(ngModel)]="caretakerEmail"
+          name="caretakerEmail"
+          type="email"
+          [disabled]="!editCaretakerEmail"
+        />
+        <button
+          pButton
+          icon="pi pi-pencil"
+          class="p-button-rounded p-button-info p-button-sm"
+          type="button"
+          (click)="toggleCaretakerEmailEdit()"
+          pTooltip="Advertencia: Si se cambia el correo electrónico, se enviará una solicitud al nuevo correo y se asociará como el nuevo tutor. El anterior será eliminado."
+          tooltipPosition="top"
+        ></button>
+      </div>
+    </div>
+    <button
+      pButton
+      label="Guardar Cambios"
+      type="submit"
+      class="p-button-primary"
+      [disabled]="editKidForm.invalid"
+    ></button>
+  </form>
+</div>

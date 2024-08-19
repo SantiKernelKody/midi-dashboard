@@ -57,8 +57,14 @@ export class SchoolManagementService {
   deleteTeacher(teacherId: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/delete_teacher/${teacherId}`);
   }
-  getKids(courseId: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/get_kids/${courseId}`);
+
+  getKids(courseId: number, page: number = 1, size: number = 10): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/get_kids/${courseId}`, {
+      params: {
+        page: page.toString(),
+        size: size.toString(),
+      }
+    });
   }
 
   // Obtener la información de un estudiante
@@ -67,8 +73,8 @@ export class SchoolManagementService {
   }
 
   // Crear un nuevo estudiante
-  createKid(courseId: number, kidData: any, parentEmail: string): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/create_kid/${courseId}`, { ...kidData, parent_email: parentEmail });
+  createKid(courseId: number, kidData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/create_kid/${courseId}`, kidData);
   }
 
   // Editar un estudiante existente

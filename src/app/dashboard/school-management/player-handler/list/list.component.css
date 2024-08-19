@@ -1,0 +1,24 @@
+
+.school-link {
+    text-decoration: underline;
+    color: #007bff;
+    cursor: pointer;
+  }
+  .kid-list-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .table-container {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .action-button{
+    margin: 0 10px;
+  }
+  .create-button{
+    width: fit-content;
+  }
+

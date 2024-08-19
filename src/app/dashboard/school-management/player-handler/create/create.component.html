@@ -1,1 +1,60 @@
-<p>create works!</p>
+<div class="kid-create-container">
+  <h2>Crear Estudiante</h2>
+  <button
+    pButton
+    label="Regresar"
+    class="p-button-secondary"
+    icon="pi pi-arrow-left"
+    (click)="goBack()"
+  ></button>
+  <form (ngSubmit)="onSubmit()" #createKidForm="ngForm">
+    <div class="form-field">
+      <label for="fullName">Nombre Completo</label>
+      <input
+        pInputText
+        id="fullName"
+        [(ngModel)]="fullName"
+        name="fullName"
+        required
+      />
+    </div>
+    <div class="form-field">
+      <label for="age">Edad</label>
+      <input
+        pInputText
+        id="age"
+        [(ngModel)]="age"
+        name="age"
+        type="number"
+        required
+      />
+    </div>
+    <div class="form-field">
+      <label for="ethnicity">Etnia</label>
+      <input
+        pInputText
+        id="ethnicity"
+        [(ngModel)]="ethnicity"
+        name="ethnicity"
+        required
+      />
+    </div>
+    <div class="form-field">
+      <label for="parentEmail">Correo Electrónico del Tutor</label>
+      <input
+        pInputText
+        id="parentEmail"
+        [(ngModel)]="parentEmail"
+        name="parentEmail"
+        type="email"
+      />
+    </div>
+    <button
+      pButton
+      label="Crear Estudiante"
+      type="submit"
+      class="p-button-primary"
+      [disabled]="createKidForm.invalid"
+    ></button>
+  </form>
+</div>
