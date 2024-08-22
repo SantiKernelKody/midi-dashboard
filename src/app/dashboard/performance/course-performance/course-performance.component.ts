@@ -54,6 +54,11 @@ export class CoursePerformanceComponent {
   ) { }
 
   ngOnInit(): void {
+    this.loadInitialData();
+    this.loadSavedFilters();
+  }
+
+  loadInitialData(): void {
     // Capturar el course_id y school_id desde la URL
     const schoolId = +this.route.snapshot.paramMap.get('school_id')!;
     const courseId = +this.route.snapshot.paramMap.get('course_id')!;
@@ -65,32 +70,49 @@ export class CoursePerformanceComponent {
 
       // Seleccionar el curso automáticamente si courseId está presente
       if (courseId) {
-        //this.selectedCourse = this.courses.find(course => course.value === courseId);
+        this.selectedCourse = this.courses.find(course => course.value === courseId);
 
         // Ejecutar la lógica para cargar los datos del curso seleccionado
         if (this.selectedCourse) {
-          //this.onCourseSelect();
+          this.onCourseSelect();
         }
       }
-      console.log("this.courses: ", this.courses);
     });
-
 
     // Cargar dropdowns de stages y juegos
     this.performanceService.getStages().subscribe(stages => {
       this.stages = stages.map((stage: { name: any; id: any; }) => ({ label: stage.name, value: stage.id }));
-      console.log("this.stages: ", this.stages);
     });
 
     this.generalService.getGames().subscribe(games => {
       this.games = games.map((game: { name: any; id: any; }) => ({ label: game.name, value: game.id }));
     });
   }
-  getLink(): string {
-    return `/dashboard/rendimiento/jugador`;
+
+  loadSavedFilters(): void {
+    const savedFilters = localStorage.getItem('coursePerformanceFilters');
+    if (savedFilters) {
+      const filters = JSON.parse(savedFilters);
+      this.selectedCourse = filters.selectedCourse;
+      this.selectedStage = filters.selectedStage;
+      this.selectedGame = filters.selectedGame;
+      this.rangeDates = filters.rangeDates.map((date: string) => new Date(date));
+
+      // Re-ejecutar el filtro si todos los filtros están seleccionados
+      if (this.allFiltersSelected()) {
+        this.onCourseSelect();
+      }
+    }
   }
-  goBack(): void {
-    this.location.back();
+
+  saveFilters(): void {
+    const filters = {
+      selectedCourse: this.selectedCourse,
+      selectedStage: this.selectedStage,
+      selectedGame: this.selectedGame,
+      rangeDates: this.rangeDates.map(date => date.toISOString())
+    };
+    localStorage.setItem('coursePerformanceFilters', JSON.stringify(filters));
   }
 
   allFiltersSelected(): boolean {
@@ -103,8 +125,9 @@ export class CoursePerformanceComponent {
   }
 
   onCourseSelect(): void {
-    console.log(this.selectedCourse, this.selectedStage, this.selectedGame, this.rangeDates);
-    if (this.selectedCourse && this.selectedStage && this.selectedGame && this.rangeDates.length === 2) {
+    this.saveFilters();
+
+    if (this.allFiltersSelected()) {
       const startDate = this.rangeDates ? this.rangeDates[0].toISOString().split('T')[0] : null;
       const endDate = this.rangeDates ? this.rangeDates[1].toISOString().split('T')[0] : null;
 
@@ -143,6 +166,13 @@ export class CoursePerformanceComponent {
         }));
       });
     }
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+  getLink(): string {
+    return `/dashboard/rendimiento/jugador`;
   }
 }
 

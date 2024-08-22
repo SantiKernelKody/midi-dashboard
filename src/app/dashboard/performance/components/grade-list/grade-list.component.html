@@ -10,7 +10,7 @@
     <ng-template pTemplate="body" let-item>
       <tr>
         <td>
-          <a [routerLink]="[link, item.id]">
+          <a class="link-item" [routerLink]="[link, item.id]">
             <i class="pi pi-book"></i>
             {{ item.label }}
           </a>

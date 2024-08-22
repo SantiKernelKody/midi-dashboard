@@ -37,8 +37,8 @@ export class TeacherHeaderComponent {
     this.dashboardService.getGeneralHeaders('teacher').subscribe(data => {
       this.generalHeader = data;
       this.infoCards = [
-        { title: 'Total Courses', value: data.total_courses, icon: 'pi pi-book' },
-        { title: 'Total Players', value: data.total_players, icon: 'pi pi-users' }
+        { title: 'Numero cursos', value: data.total_courses, icon: 'pi pi-book' },
+        { title: 'Numero niños', value: data.total_players, icon: 'pi pi-users' }
       ];
     });
   }
@@ -48,8 +48,8 @@ export class TeacherHeaderComponent {
     await this.dashboardService.getGameHeader('teacher', gameId).subscribe(data => {
       this.gameHeader = data;
       this.gameCards = [
-        { title: 'Total Players', value: data.total_players, icon: 'pi pi-users' },
-        { title: 'Total Courses', value: data.total_courses, icon: 'pi pi-book' }
+        { title: 'Numero niños', value: data.total_players, icon: 'pi pi-users' },
+        { title: 'Numero cursos', value: data.total_courses, icon: 'pi pi-book' }
       ];
     });
     // Fetching data for charts using the correct API endpoint

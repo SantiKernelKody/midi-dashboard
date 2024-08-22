@@ -37,10 +37,10 @@ export class AdminHeaderComponent {
     this.dashboardService.getGeneralHeaders('admin').subscribe(data => {
       this.generalHeader = data;
       this.infoCards = [
-        { title: 'Total Players', value: data.total_players, icon: 'pi pi-users' },
-        { title: 'Total Games', value: data.total_games, icon: 'pi pi-crown' },
-        { title: 'Total Chapters', value: data.total_chapters, icon: 'pi pi-book' },
-        { title: 'Total Levels', value: data.total_levels, icon: 'pi pi-bars' }
+        { title: 'Numero niños', value: data.total_players, icon: 'pi pi-users' },
+        { title: 'Numero juegos', value: data.total_games, icon: 'pi pi-crown' },
+        { title: 'Numero capitulos', value: data.total_chapters, icon: 'pi pi-book' },
+        { title: 'Numero niveles', value: data.total_levels, icon: 'pi pi-bars' }
       ];
     });
   }

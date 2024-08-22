@@ -25,7 +25,6 @@ export class SchoolPerformanceComponent {
   selectedGame: any;
   rangeDates: Date[] = [];
 
-
   // Variables para almacenar datos de las gráficas y listas
   levelGradesData: number[] = [];
   levelGradesLabels: string[] = [];
@@ -44,22 +43,11 @@ export class SchoolPerformanceComponent {
 
   items: { label: string; score: number; id: string }[] = [];
 
-
   constructor(private performanceService: PerformanceService, private generalService: GeneralService) { }
 
   ngOnInit(): void {
     this.loadInitialData();
-  }
-  getLink(): string {
-    return `/dashboard/rendimiento/curso/${this.selectedSchool.value}`;
-  }
-  allFiltersSelected(): boolean {
-    return (
-      this.selectedSchool &&
-      this.rangeDates.length === 2 &&
-      this.selectedStage &&
-      this.selectedGame
-    );
+    this.loadSavedFilters();
   }
 
   loadInitialData(): void {
@@ -76,15 +64,40 @@ export class SchoolPerformanceComponent {
     });
   }
 
+  loadSavedFilters(): void {
+    const savedFilters = localStorage.getItem('schoolPerformanceFilters');
+    if (savedFilters) {
+      const filters = JSON.parse(savedFilters);
+      this.selectedSchool = filters.selectedSchool;
+      this.selectedStage = filters.selectedStage;
+      this.selectedGame = filters.selectedGame;
+      this.rangeDates = filters.rangeDates.map((date: string) => new Date(date));
+
+      // Re-ejecutar el filtro si todos los filtros están seleccionados
+      if (this.allFiltersSelected()) {
+        this.onFilterChange();
+      }
+    }
+  }
+
+  saveFilters(): void {
+    const filters = {
+      selectedSchool: this.selectedSchool,
+      selectedStage: this.selectedStage,
+      selectedGame: this.selectedGame,
+      rangeDates: this.rangeDates.map(date => date.toISOString())
+    };
+    localStorage.setItem('schoolPerformanceFilters', JSON.stringify(filters));
+  }
+
   onFilterChange(): void {
-    console.log(this.selectedSchool, this.selectedStage, this.selectedGame, this.rangeDates);
-    if (this.selectedSchool && this.selectedStage && this.selectedGame && this.rangeDates.length === 2) {
+    this.saveFilters();
+
+    if (this.allFiltersSelected()) {
       const startDate = this.rangeDates[0].toISOString().split('T')[0];
       const endDate = this.rangeDates[1].toISOString().split('T')[0];
 
       this.performanceService.getPerformanceSchool(this.selectedSchool.value, startDate, endDate, this.selectedStage.value, this.selectedGame.value).subscribe(data => {
-
-        // Asignar datos y etiquetas para cada gráfica y lista por separado
         this.levelGradesData = data.level_grades.data;
         this.levelGradesLabels = data.level_grades.labels;
 
@@ -107,5 +120,17 @@ export class SchoolPerformanceComponent {
         }));
       });
     }
+  }
+
+  allFiltersSelected(): boolean {
+    return (
+      this.selectedSchool &&
+      this.rangeDates.length === 2 &&
+      this.selectedStage &&
+      this.selectedGame
+    );
+  }
+  getLink(): string {
+    return `/dashboard/rendimiento/curso/${this.selectedSchool.value}`;
   }
 }
