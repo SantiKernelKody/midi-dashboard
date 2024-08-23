@@ -2,30 +2,42 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-width: 200px;
 }
 .performance-container{
-    width: 100%;
+    width: 80vw;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     gap: 10px;
 }
 
-.chart-container{
-
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    justify-content: center;
-    align-items: center;
+.chart-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual tamaño */
+    gap: 40px; /* Espacio entre los gráficos */
+    justify-items: center; /* Centrar horizontalmente cada elemento */
+    align-items: center; /* Centrar verticalmente cada elemento */
+    width: 100%; /* Asegurarse de que el contenedor ocupe todo el ancho disponible */
+    margin-top: 20px;
 }
 
-.performance-right{
-    min-width: 1000px;
+.performance-right {
+    flex: 1; /* Ocupar el espacio disponible restante */
+    padding: 20px;
+    overflow-y: auto; /* Permitir scroll si el contenido es demasiado alto */
+    max-height: calc(100vh - 120px); /* Ajuste la altura disponible */
 }
 .school-name{
     margin-left: 10px;
     font-weight: 600;
     font-size: 20px;
     color: var(--black-color);
+  }
+  .school-data{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
   }

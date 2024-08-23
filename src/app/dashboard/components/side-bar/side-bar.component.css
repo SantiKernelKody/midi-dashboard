@@ -1,7 +1,7 @@
 .sidebar {
   width: 250px;
   height: 100vh;
-  background-color: #C5CCDE;
+  background-color: #ACD7EA;
   color: white;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
 }
 
 .logo img {
-  width: 150px;
+  width: 200px;
   height: auto;
   margin-bottom: 20px;
 }
@@ -36,7 +36,7 @@
 }
 
 .menu a:hover {
-  background-color: #B2D7A4;
+  background-color: #C6E7FA;
 }
 
 .menu i {
@@ -44,6 +44,6 @@
 }
 
 .menu a.active {
-  background-color: #B2D7A4;
+  background-color: #C6E7FA;
   font-weight: bold;
 }

@@ -29,8 +29,13 @@ export class SchoolManagementService {
     return this.http.delete(`${this.baseUrl}/delete_school/${schoolId}`);
   }
 
-  getCourses(schoolId: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/get_courses/${schoolId}`);
+  getCourses(schoolId: number, page: number, size: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/get_courses/${schoolId}`, {
+      params: {
+        page: page.toString(),
+        size: size.toString(),
+      }
+    });
   }
   getCourse(courseId: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/get_course/${courseId}`);
@@ -43,8 +48,13 @@ export class SchoolManagementService {
   deleteCourse(courseId: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/delete_course/${courseId}`);
   }
-  getTeachers(schoolId: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/get_teachers/${schoolId}`);
+  getTeachers(schoolId: number, page: number, size: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/get_teachers/${schoolId}`, {
+      params: {
+        page: page.toString(),
+        size: size.toString(),
+      }
+    });
   }
 
   createTeacher(schoolId: number, teacherData: any): Observable<any> {

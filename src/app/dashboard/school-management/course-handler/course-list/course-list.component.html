@@ -23,7 +23,19 @@
         class="p-button-success create-button"
         (click)="createCourse()"
       ></button>
-      <p-table [value]="courses">
+      <p-table
+        appendTo="body"
+        scrollHeight="flex"
+        [value]="courses"
+        [paginator]="true"
+        [rows]="pageSize"
+        [totalRecords]="totalCourses"
+        [lazy]="true"
+        [loading]="loadingCourses"
+        (onLazyLoad)="loadCourses($event)"
+        [rowsPerPageOptions]="[5, 10, 25]"
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas"
+      >
         <ng-template pTemplate="header">
           <tr>
             <th>Nombre</th>
@@ -44,12 +56,6 @@
                 class="p-button-warning"
                 (click)="editCourse(course.id)"
               ></button>
-              <!--<button
-                  pButton
-                  icon="pi pi-trash"
-                  class="p-button-danger"
-                  (click)="deleteCourse(course.id)"
-                ></button>-->
             </td>
           </tr>
         </ng-template>
@@ -64,7 +70,17 @@
         class="p-button-success create-button"
         (click)="createTeacher()"
       ></button>
-      <p-table [value]="teachers">
+      <p-table
+        [value]="teachers"
+        [paginator]="true"
+        [rows]="pageSize"
+        [totalRecords]="totalTeachers"
+        [lazy]="true"
+        [loading]="loadingTeachers"
+        (onLazyLoad)="loadTeachers($event)"
+        [rowsPerPageOptions]="[5, 10, 25]"
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas"
+      >
         <ng-template pTemplate="header">
           <tr>
             <th>Nombre</th>

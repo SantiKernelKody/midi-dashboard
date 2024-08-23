@@ -1,5 +1,9 @@
 <div class="performance-container">
   <div class="performance-left">
+    <!-- Agregar flecha para regresar -->
+    <button class="back-button" (click)="goBack()">
+      <i class="pi pi-arrow-left"></i> Atrás
+    </button>
     <!-- Dropdowns para seleccionar filtros -->
     <span>Curso</span>
     <p-dropdown
@@ -42,18 +46,13 @@
   </div>
 
   <div class="performance-right">
-    <!-- Agregar flecha para regresar -->
-    <button class="back-button" (click)="goBack()">
-      <i class="pi pi-arrow-left"></i> Atrás
-    </button>
-
     <!-- Mostrar mensaje si faltan filtros -->
     <div *ngIf="!allFiltersSelected()" class="no-results">
       <p>Por favor, selecciona todos los filtros para ver los resultados.</p>
     </div>
 
     <!-- Mostrar gráficos si todos los filtros están seleccionados -->
-    <div *ngIf="allFiltersSelected()">
+    <div class="course-data" *ngIf="allFiltersSelected()">
       <span class="course-name">Datos Curso: {{ selectedCourse?.label }}</span>
       <div class="chart-container">
         <!-- Gráfica de puntaje por nivel -->
