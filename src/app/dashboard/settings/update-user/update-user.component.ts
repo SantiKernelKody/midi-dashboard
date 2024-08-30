@@ -21,17 +21,30 @@ export class UpdateUserComponent {
   constructor(private userService: UserService, private toastService: ToastService) { }
 
   ngOnInit(): void {
-    // Aquí puedes obtener los datos actuales del usuario si es necesario
+    this.loadUserInfo();
+  }
+
+  loadUserInfo(): void {
+    this.userService.getUserInfo().subscribe({
+      next: (data) => {
+        this.name = data.name;
+        this.last_name = data.last_name;
+        this.email = data.email;
+      },
+      error: (error) => {
+        this.toastService.showError('Error', 'No se pudo cargar la información del usuario.');
+      }
+    });
   }
 
   onSubmit(): void {
     const data = { name: this.name, last_name: this.last_name, email: this.email };
     this.userService.updateUser(data).subscribe({
       next: () => {
-        this.toastService.showSuccess('Success', 'User data updated successfully');
+        this.toastService.showSuccess('Éxito', 'Datos del usuario actualizados correctamente.');
       },
       error: (error) => {
-        this.toastService.showError('Error', error.error.detail || 'Failed to update user data');
+        this.toastService.showError('Error', error.error.detail || 'No se pudieron actualizar los datos del usuario.');
       }
     });
   }

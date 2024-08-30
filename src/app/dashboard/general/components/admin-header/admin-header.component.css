@@ -1,13 +1,23 @@
-.general-cards{
+.chart-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual tamaño */
+    gap: 40px; /* Espacio entre los gráficos */
+    justify-items: center; /* Centrar horizontalmente cada gráfico */
+    align-items: center; /* Centrar verticalmente cada gráfico */
+    width: 100%; /* Asegurarse de que el contenedor ocupe todo el ancho disponible */
+    margin-top: 20px;
+}
+
+.general-cards {
     display: flex;
     flex-wrap: wrap;
+    gap: 20px; /* Espacio entre las tarjetas */
     max-width: 500px;
 }
-.data-container{
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    justify-content: start;
+.data-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas en el contenedor */
+    margin-top: 20px;
 }
 .data-game-title-container{
     display: flex;
@@ -21,12 +31,36 @@
     align-items: center;
     height: 48px;
 }
-.data-container span{
-    font-weight: bolder;
+
+.data-game{
+    padding-left: 40px;
+    border-left: 1px solid black;
 }
-.chart-container{
+.data-general{
+    padding-right: 40px;
+}
+
+.message-container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.icon {
+    font-size: 50px;
+    color: #007ad9;
+    margin-bottom: 15px;
+}
+
+.message-text {
+    font-size: 18px;
+    color: #333;
 }

@@ -2,7 +2,7 @@
 <div class="data-container">
   <div class="data-general">
     <div class="data-general-title-container">
-      <span>Datos Generales de todos los juegos</span>
+      <span>Niño seleccionado:</span>
       <p-dropdown
         [autoDisplayFirst]="false"
         [options]="kidList"
@@ -16,7 +16,7 @@
   </div>
   <div class="data-game">
     <div class="data-game-title-container">
-      <span>Datos general del juego</span>
+      <span>Juego seleccionado:</span>
       <p-dropdown
         [autoDisplayFirst]="false"
         [options]="games"
@@ -30,7 +30,9 @@
     </div>
   </div>
 </div>
-<h3>{{ selectedGame?.label }}</h3>
+<h3 class="game-title" *ngIf="barChartData1">
+  Datos generados del juego: {{ selectedGame?.label }}
+</h3>
 <div class="chart-container">
   <app-bar-chart
     *ngIf="barChartData1"
@@ -63,4 +65,12 @@
     [labels]="stackedChartData2.labels"
     [title]="'Estado de Historias Completadas vs Abandonadas'"
   ></app-stacked-chart>
+</div>
+
+<div *ngIf="!barChartData1" class="message-container">
+  <i class="pi pi-face-smile icon"></i>
+  <p class="message-text">
+    Por favor, selecciona un niño y un juego para visualizar los datos generales
+    correspondientes.
+  </p>
 </div>

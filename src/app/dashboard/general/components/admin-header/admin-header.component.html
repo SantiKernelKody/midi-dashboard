@@ -16,7 +16,7 @@
   </div>
   <div class="data-game">
     <div class="data-game-title-container">
-      <span>Datos del juego</span>
+      <span>Juego seleccionado:</span>
       <p-dropdown
         [autoDisplayFirst]="false"
         [options]="games"
@@ -38,7 +38,9 @@
     </div>
   </div>
 </div>
-<h3>{{ selectedGame?.label }}</h3>
+<h3 *ngIf="barChartData1">
+  Datos generados del juego: {{ selectedGame?.label }}
+</h3>
 <div class="chart-container">
   <app-bar-chart
     *ngIf="barChartData1"
@@ -71,4 +73,12 @@
     [labels]="stackedChartData2.labels"
     [title]="'Estado de Historias Completadas vs Abandonadas'"
   ></app-stacked-chart>
+</div>
+
+<div *ngIf="!barChartData1" class="message-container">
+  <i class="pi pi-face-smile icon"></i>
+  <p class="message-text">
+    Por favor, selecciona el juego para poder visualizar los datos generales del
+    mismo.
+  </p>
 </div>

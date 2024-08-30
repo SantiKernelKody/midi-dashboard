@@ -1,5 +1,4 @@
 .child-performance-container {
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,3 +56,41 @@
   ::ng-deep i.pi-arrow-left{
     color: white;
   }
+
+  .message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    height: fit-content;
+    width: fit-content;
+    margin-top: 20px;
+  }
+  
+  .icon {
+    font-size: 50px;
+    color: #007ad9;
+    margin-bottom: 15px;
+  }
+  
+  .message-text {
+    font-size: 18px;
+    color: #333;
+  }
+
+  .child-info-header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .edit-button {
+    margin-left: 10px; /* Espacio entre el título y el botón */
+  }
+  

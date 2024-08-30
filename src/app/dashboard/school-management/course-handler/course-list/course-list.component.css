@@ -27,3 +27,9 @@ button{
     flex-direction: row;
     gap: 5px;
 }
+
+::ng-deep  p-dropdown {
+    .ui-dropdown {
+      min-width:0;
+    }
+}

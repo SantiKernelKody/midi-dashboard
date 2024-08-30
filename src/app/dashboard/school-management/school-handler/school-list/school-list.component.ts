@@ -19,12 +19,15 @@ import { AuthService } from '../../../../services/auth.service';
 })
 export class SchoolListComponent {
   schools: any[] = [];
+  totalItems: number = 0;
+  pageSize: number = 10;
+  currentPage: number = 1;
 
   constructor(
     private schoolService: SchoolManagementService,
     private router: Router,
     private toastService: ToastService,
-    private authService: AuthService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -32,14 +35,21 @@ export class SchoolListComponent {
   }
 
   loadSchools(): void {
-    this.schoolService.getSchools(1, 10).subscribe(
+    this.schoolService.getSchools(this.currentPage, this.pageSize).subscribe(
       (data) => {
-        this.schools = data;
+        this.schools = data.schools;
+        this.totalItems = data.total_items;
       },
       (error) => {
         this.toastService.showError('Error', 'No se pudo cargar la lista de escuelas.');
       }
     );
+  }
+
+  onPageChange(event: any): void {
+    this.currentPage = event.first / event.rows + 1;
+    this.pageSize = event.rows;
+    this.loadSchools();
   }
 
   createSchool(): void {
@@ -63,9 +73,11 @@ export class SchoolListComponent {
       );
     }
   }
+
   goToCourses(schoolId: number): void {
     this.router.navigate(['/dashboard/gestion-escuela/course-handler/course-list', schoolId]);
   }
+
   isTeacher(): boolean {
     return this.authService.isTeacher();
   }

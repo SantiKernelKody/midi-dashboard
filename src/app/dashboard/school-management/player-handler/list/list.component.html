@@ -53,7 +53,11 @@
     </ng-template>
     <ng-template pTemplate="body" let-kid>
       <tr>
-        <td>{{ kid.full_name }}</td>
+        <td>
+          <a (click)="goToPlayerPerformance(kid.id)" class="player-link">{{
+            kid.full_name
+          }}</a>
+        </td>
         <td>{{ kid.edad }}</td>
         <td>{{ kid.ethnicity }}</td>
         <td>

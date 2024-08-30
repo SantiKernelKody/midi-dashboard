@@ -31,3 +31,9 @@
 .back-button{
     height: fit-content;
 }
+
+.player-link {
+  text-decoration: underline;
+  color: #007bff;
+  cursor: pointer;
+}

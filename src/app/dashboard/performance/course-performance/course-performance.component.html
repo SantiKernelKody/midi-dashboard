@@ -4,6 +4,7 @@
     <button class="back-button" (click)="goBack()">
       <i class="pi pi-arrow-left"></i> Atrás
     </button>
+    <h3>Filtros de Visualización</h3>
     <!-- Dropdowns para seleccionar filtros -->
     <span>Curso</span>
     <p-dropdown
@@ -47,8 +48,12 @@
 
   <div class="performance-right">
     <!-- Mostrar mensaje si faltan filtros -->
-    <div *ngIf="!allFiltersSelected()" class="no-results">
-      <p>Por favor, selecciona todos los filtros para ver los resultados.</p>
+    <div *ngIf="!allFiltersSelected()" class="message-container">
+      <i class="pi pi-face-smile icon"></i>
+      <p class="message-text">
+        Por favor, selecciona el curso, las fechas, el escenario y el juego para
+        visualizar los datos específicos de la misma.
+      </p>
     </div>
 
     <!-- Mostrar gráficos si todos los filtros están seleccionados -->

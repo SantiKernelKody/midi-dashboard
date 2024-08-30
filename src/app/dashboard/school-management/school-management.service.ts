@@ -11,7 +11,12 @@ export class SchoolManagementService {
   constructor(private http: HttpClient) { }
 
   getSchools(page: number, size: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/get_schools?page=${page}&size=${size}`);
+    return this.http.get<any>(`${this.baseUrl}/get_schools`, {
+      params: {
+        page: page.toString(),
+        size: size.toString(),
+      },
+    });
   }
   getSchool(schoolId: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/get_school/${schoolId}`);

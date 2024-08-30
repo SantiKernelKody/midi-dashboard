@@ -83,5 +83,7 @@ export class ListComponent {
   goBack(): void {
     this.location.back();
   }
-
+  goToPlayerPerformance(playerId: number): void {
+    this.router.navigate(['/dashboard/rendimiento/jugador', playerId]);
+  }
 }

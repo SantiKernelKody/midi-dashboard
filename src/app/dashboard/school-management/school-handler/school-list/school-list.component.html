@@ -7,7 +7,17 @@
     (click)="createSchool()"
     *ngIf="!isTeacher()"
   ></button>
-  <p-table [value]="schools">
+  <p-table
+    [value]="schools"
+    [paginator]="true"
+    [rows]="pageSize"
+    [totalRecords]="totalItems"
+    [lazy]="true"
+    (onLazyLoad)="onPageChange($event)"
+    [rowsPerPageOptions]="[5, 10, 25, 50]"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} escuelas"
+  >
     <ng-template pTemplate="header">
       <tr>
         <th>Nombre</th>

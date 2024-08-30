@@ -7,11 +7,12 @@ import { StackedChartComponent } from '../../components/stacked-chart/stacked-ch
 import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-child-performance',
   standalone: true,
-  imports: [ChartBarComponent, StackedChartComponent, DropdownModule, FormsModule, CommonModule],
+  imports: [ChartBarComponent, StackedChartComponent, DropdownModule, FormsModule, CommonModule, ButtonModule],
   templateUrl: './child-performance.component.html',
   styleUrl: './child-performance.component.css'
 })
@@ -87,4 +88,8 @@ export class ChildPerformanceComponent {
         });
     }
   }
+  editChildInfo(): void {
+    this.router.navigate(['/dashboard/gestion-escuela/player-handler/update', this.kidId]);
+  }
+
 }

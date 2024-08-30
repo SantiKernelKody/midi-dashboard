@@ -37,10 +37,10 @@ export class AdminHeaderComponent {
     this.dashboardService.getGeneralHeaders('admin').subscribe(data => {
       this.generalHeader = data;
       this.infoCards = [
-        { title: 'Numero niños', value: data.total_players, icon: 'pi pi-users' },
-        { title: 'Numero juegos', value: data.total_games, icon: 'pi pi-crown' },
-        { title: 'Numero capitulos', value: data.total_chapters, icon: 'pi pi-book' },
-        { title: 'Numero niveles', value: data.total_levels, icon: 'pi pi-bars' }
+        { title: 'Numero de niños', value: data.total_players, icon: 'pi pi-users' },
+        { title: 'Numero de juegos', value: data.total_games, icon: 'pi pi-crown' },
+        { title: 'Numero de capitulos', value: data.total_chapters, icon: 'pi pi-book' },
+        { title: 'Numero de niveles', value: data.total_levels, icon: 'pi pi-bars' }
       ];
     });
   }
@@ -50,9 +50,9 @@ export class AdminHeaderComponent {
     await this.dashboardService.getGameHeader('admin', gameId).subscribe(data => {
       this.gameHeader = data;
       this.gameCards = [
-        { title: 'Total Players', value: data.total_players, icon: 'pi pi-users' },
-        { title: 'Total Chapters', value: data.total_chapters, icon: 'pi pi-book' },
-        { title: 'Total Levels', value: data.total_levels, icon: 'pi pi-bars' }
+        { title: 'Numero de niños', value: data.total_players, icon: 'pi pi-users' },
+        { title: 'Capitulos del juego', value: data.total_chapters, icon: 'pi pi-book' },
+        { title: 'Numero de niveles', value: data.total_levels, icon: 'pi pi-bars' }
       ];
     });
     // Fetching data for charts using the correct API endpoint

@@ -5,7 +5,16 @@
     </button>
     <!-- Información del niño -->
     <div class="child-info">
-      <h3>Información del Niño</h3>
+      <div class="child-info-header">
+        <h3>Información del Niño</h3>
+        <p-button
+          icon="pi pi-pencil"
+          class="p-button-rounded p-button-text edit-button"
+          (click)="editChildInfo()"
+          tooltip="Editar Información del Niño"
+          tooltipPosition="top"
+        ></p-button>
+      </div>
       <p><strong>Nombre:</strong> {{ playerData.full_name }}</p>
       <p><strong>Edad:</strong> {{ playerData.age }}</p>
       <p><strong>Etnia:</strong> {{ playerData.ethnicity }}</p>
@@ -33,7 +42,16 @@
     </div>
   </div>
 
+  <div *ngIf="!selectedGame" class="message-container">
+    <i class="pi pi-face-smile icon"></i>
+    <p class="message-text">
+      Por favor, selecciona el juego para visualizar el desempeño de este niño.
+    </p>
+  </div>
   <!-- Gráficas y datos -->
+  <h3 class="game-title" *ngIf="selectedGame">
+    Desempeño del niño en el juego: {{ selectedGame?.label }}
+  </h3>
   <div *ngIf="selectedGame" class="chart-container">
     <app-bar-chart
       [title]="'Puntaje por Nivel'"
