@@ -7,7 +7,7 @@
         class="input-container"
         [class.p-invalid]="!usernameModel.valid && usernameModel.touched"
       >
-        <label for="username">Username</label>
+        <label for="username">Correo</label>
         <input
           pInputText
           id="username"
@@ -27,7 +27,7 @@
         class="input-container"
         [class.p-invalid]="!passwordModel.valid && passwordModel.touched"
       >
-        <label for="password">Password</label>
+        <label for="password">Contraseña</label>
         <p-password
           name="password"
           [(ngModel)]="password"
@@ -42,7 +42,7 @@
         >
       </div>
       <div class="input-container">
-        <label for="role">Role</label>
+        <label for="role">Rol</label>
         <p-dropdown
           [options]="roles"
           [(ngModel)]="selectedRole"
@@ -52,7 +52,7 @@
       </div>
       <p-button
         type="submit"
-        label="Submit"
+        label="Ingresar"
         class="login-button"
         [disabled]="loginForm.invalid || !selectedRole"
       ></p-button>

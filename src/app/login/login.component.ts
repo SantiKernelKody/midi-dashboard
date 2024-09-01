@@ -24,9 +24,9 @@ export class LoginComponent {
   email: string = "";
   password: string = "";
   roles = [
-    { label: 'Admin', value: ROLES.ADMIN },
-    { label: 'Teacher', value: ROLES.TEACHER },
-    { label: 'Parent', value: ROLES.PARENT }
+    { label: 'Administrador', value: ROLES.ADMIN },
+    { label: 'Profesor', value: ROLES.TEACHER },
+    { label: 'Padre', value: ROLES.PARENT }
   ];
   selectedRole: string = "";
   error: string = "";

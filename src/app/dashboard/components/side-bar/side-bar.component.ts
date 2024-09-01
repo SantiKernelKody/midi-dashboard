@@ -33,6 +33,9 @@ export class SideBarComponent {
         { label: 'Rendimiento', icon: 'pi pi-chart-line', route: '/dashboard/rendimiento' },
         { label: 'Gestión escolar', icon: 'pi pi-graduation-cap', route: '/dashboard/gestion-escuela/school-handler' }
       ] : []),
+      ...(this.authService.isAdmin() ? [
+        { label: 'habilidades', icon: 'pi pi-stare', route: '/dashboard/skills' },
+      ] : [])
     ];
   }
 
