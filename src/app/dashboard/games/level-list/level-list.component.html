@@ -1,19 +1,20 @@
-<div class="skill-list-container">
-  <h2>Gestión de Habilidades</h2>
-  <p-button
+<div class="levels-list-container">
+  <button
     pButton
-    label="Crear Habilidad"
-    class="p-button-success create-button"
-    (click)="createSkill()"
-  />
-
+    label="Regresar"
+    icon="pi pi-arrow-left"
+    class="p-button-secondary"
+    (click)="goBack()"
+  ></button>
+  <h2>Lista de Niveles</h2>
   <p-table
-    [value]="skills"
+    [value]="levels"
     [paginator]="true"
     [rows]="pageSize"
     [totalRecords]="totalItems"
     [lazy]="true"
     (onLazyLoad)="onPageChange($event)"
+    [first]="(currentPage - 1) * pageSize"
     [rowsPerPageOptions]="[5, 10, 25, 50]"
     [showCurrentPageReport]="true"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas"
@@ -21,26 +22,18 @@
     <ng-template pTemplate="header">
       <tr>
         <th>Nombre</th>
-        <th>Descripción</th>
         <th>Acciones</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-skill>
+    <ng-template pTemplate="body" let-level>
       <tr>
-        <td>{{ skill.name }}</td>
-        <td>{{ skill.description }}</td>
+        <td>{{ level.name }}</td>
         <td>
           <button
             pButton
             icon="pi pi-pencil"
-            class="p-button-warning action-button"
-            (click)="editSkill(skill.id)"
-          ></button>
-          <button
-            pButton
-            icon="pi pi-trash"
-            class="p-button-danger action-button"
-            (click)="deleteSkill(skill.id)"
+            class="p-button-warning"
+            (click)="editLevel(level.id)"
           ></button>
         </td>
       </tr>

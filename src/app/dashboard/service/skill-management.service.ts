@@ -32,4 +32,21 @@ export class SkillManagementService {
   deleteSkill(skillId: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/skills/${skillId}`);
   }
+
+  getGames(page: number, size: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/games?page=${page}&size=${size}`);
+  }
+
+  getLevelsForGame(gameId: number, page: number = 1, size: number = 10): Observable<any> {
+    return this.http.get(`${this.apiUrl}/game/${gameId}/levels?page=${page}&size=${size}`);
+  }
+
+
+  getLevelWithSkills(levelId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/level/${levelId}`);
+  }
+
+  updateLevel(levelId: number, levelData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/level/${levelId}`, levelData);
+  }
 }

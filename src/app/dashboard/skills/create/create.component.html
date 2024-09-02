@@ -1,1 +1,52 @@
-<p>create works!</p>
+<div class="create-skill-container">
+  <p-button
+    pButton
+    label="Regresar"
+    class="p-button-primary back"
+    icon="pi pi-arrow-left"
+    (click)="goBack()"
+  />
+  <h2>Crear Nueva Habilidad</h2>
+  <form (ngSubmit)="onSubmit()" #createSkillForm="ngForm">
+    <div class="form-field">
+      <label for="name">Nombre</label>
+      <input
+        pInputText
+        id="name"
+        [(ngModel)]="name"
+        name="name"
+        required
+        #nameModel="ngModel"
+      />
+      <div *ngIf="nameModel.invalid && (nameModel.dirty || nameModel.touched)">
+        <small class="error-text">El nombre es requerido.</small>
+      </div>
+    </div>
+    <div class="form-field">
+      <label for="description">Descripción</label>
+      <textarea
+        pInputTextarea
+        id="description"
+        [(ngModel)]="description"
+        name="description"
+        required
+        rows="4"
+        #descriptionModel="ngModel"
+      ></textarea>
+      <div
+        *ngIf="
+          descriptionModel.invalid &&
+          (descriptionModel.dirty || descriptionModel.touched)
+        "
+      >
+        <small class="error-text">La descripción es requerida.</small>
+      </div>
+    </div>
+    <p-button
+      label="Crear"
+      type="submit"
+      class="p-button-primary"
+      [disabled]="createSkillForm.invalid"
+    ></p-button>
+  </form>
+</div>

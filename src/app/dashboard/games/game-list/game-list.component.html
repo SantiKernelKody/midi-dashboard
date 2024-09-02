@@ -1,1 +1,40 @@
-<p>game-list works!</p>
+<div class="games-list-container">
+  <h2>Lista de Juegos</h2>
+  <p-table
+    [value]="games"
+    [paginator]="true"
+    [rows]="pageSize"
+    [totalRecords]="totalItems"
+    [lazy]="true"
+    [rowsPerPageOptions]="[5, 10, 25, 50]"
+    [currentPageReportTemplate]="
+      'Mostrando {first} a {last} de {totalRecords} juegos'
+    "
+    (onPage)="onPageChange($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nombre del Juego</th>
+        <th>Acciones</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-game>
+      <tr>
+        <td>
+          <a (click)="goToLevels(game.id)" class="game-link">
+            {{ game.name }}
+          </a>
+        </td>
+        <td>
+          <button
+            pButton
+            label="Ver Niveles"
+            icon="pi pi-eye"
+            (click)="goToLevels(game.id)"
+            class="p-button-info"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

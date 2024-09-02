@@ -1,0 +1,62 @@
+.create-skill-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre los campos del formulario */
+  }
+  
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px; /* Espacio entre el label y el input */
+  }
+  
+  input[pInputText],
+  textarea[pInputTextarea] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  
+  textarea[pInputTextarea] {
+    resize: vertical; /* Permitir cambiar el tamaño vertical del textarea */
+  }
+  
+  button.p-button-primary {
+    align-self: flex-end;
+    margin-top: 20px;
+  }
+  
+  .top-header{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+  .top-header h2{
+    margin: 0;
+  }
+  .back{
+    width: fit-content;
+    padding: 0;
+  }

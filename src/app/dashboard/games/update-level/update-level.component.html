@@ -1,0 +1,103 @@
+<div class="update-level-container">
+  <button
+    pButton
+    label="Regresar"
+    icon="pi pi-arrow-left"
+    class="p-button-secondary"
+    (click)="goBack()"
+  ></button>
+  <h2>Actualizar Nivel</h2>
+  <form [formGroup]="levelForm" (ngSubmit)="onSubmit()">
+    <div class="form-field">
+      <label for="name">Nombre</label>
+      <input pInputText id="name" formControlName="name" required />
+      <div
+        *ngIf="
+          levelForm.controls['name'].invalid &&
+          levelForm.controls['name'].touched
+        "
+      >
+        <small class="error-text">El nombre es requerido.</small>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="description">Descripción</label>
+      <input
+        pInputText
+        id="description"
+        formControlName="description"
+        required
+      />
+      <div
+        *ngIf="
+          levelForm.controls['description'].invalid &&
+          levelForm.controls['description'].touched
+        "
+      >
+        <small class="error-text">La descripción es requerida.</small>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="evaluation_criteria">Criterios de Evaluación</label>
+      <textarea
+        pInputTextarea
+        id="evaluation_criteria"
+        formControlName="evaluation_criteria"
+        rows="3"
+        required
+      ></textarea>
+      <div
+        *ngIf="
+          levelForm.controls['evaluation_criteria'].invalid &&
+          levelForm.controls['evaluation_criteria'].touched
+        "
+      >
+        <small class="error-text"
+          >Los criterios de evaluación son requeridos.</small
+        >
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="max_score">Puntaje Máximo</label>
+      <input
+        pInputText
+        id="max_score"
+        formControlName="max_score"
+        type="number"
+        required
+      />
+      <div
+        *ngIf="
+          levelForm.controls['max_score'].invalid &&
+          levelForm.controls['max_score'].touched
+        "
+      >
+        <small class="error-text"
+          >El puntaje máximo es requerido y debe ser mayor que 0.</small
+        >
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="skills">Habilidades</label>
+      <p-multiSelect
+        appendTo="body"
+        [options]="skills"
+        [(ngModel)]="selectedSkills"
+        optionLabel="name"
+        formControlName="skill_ids"
+        defaultLabel="Selecciona Habilidades"
+      ></p-multiSelect>
+    </div>
+
+    <p-button
+      label="Actualizar"
+      type="submit"
+      class="p-button-primary"
+      [disabled]="levelForm.invalid"
+    ></p-button>
+  </form>
+</div>

@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { ToastService } from '../../../services/toast.service';
 import { SkillManagementService } from '../../service/skill-management.service';
 import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [TableModule],
+  imports: [TableModule, ButtonModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
@@ -74,7 +75,8 @@ export class ListComponent {
   }
 
   onPageChange(event: any): void {
-    this.page = event.page + 1;
+    this.page = event.first / event.rows + 1;
+    this.pageSize = event.rows;
     this.loadSkills();
   }
 }

@@ -34,7 +34,8 @@ export class SideBarComponent {
         { label: 'Gestión escolar', icon: 'pi pi-graduation-cap', route: '/dashboard/gestion-escuela/school-handler' }
       ] : []),
       ...(this.authService.isAdmin() ? [
-        { label: 'habilidades', icon: 'pi pi-stare', route: '/dashboard/skills' },
+        { label: 'Habilidades', icon: 'pi pi-star', route: '/dashboard/skills' },
+        { label: 'Juegos', icon: 'pi pi-crown', route: '/dashboard/juegos' },
       ] : [])
     ];
   }
