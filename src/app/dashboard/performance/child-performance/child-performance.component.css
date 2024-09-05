@@ -34,6 +34,10 @@
     align-items: start;
     gap: 20px;
 }
+.back-button i {
+  margin-right: 8px; /* Espacio entre el icono y el texto */
+  font-size: 18px;
+}
 
 .back-button {
     margin-top: 20px;
@@ -92,5 +96,70 @@
   
   .edit-button {
     margin-left: 10px; /* Espacio entre el título y el botón */
+  }
+  .button-container{
+    display: flex;
+    width: 80vw;
+    justify-content: left;
+  }
+
+  .user-info-dropdown {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .child-info {
+    background-color: #96CBFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  
+  .child-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .child-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    background-color: var(--white-color);
+    padding: 15px;
+    border-radius: 8px;
+  }
+  
+  .child-info-grid p {
+    margin: 0;
+  }
+  
+  .child-info p {
+    font-size: 16px;
+  }
+  
+  .game-select {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  span {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  p-dropdown {
+    width: 100%;
+  }
+  
+  .edit-button {
+    font-size: 18px;
   }
   

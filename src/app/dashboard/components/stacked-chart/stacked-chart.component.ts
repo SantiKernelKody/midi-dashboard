@@ -38,7 +38,7 @@ export class StackedChartComponent implements OnChanges {
         x: {
           stacked: true,
           ticks: {
-            color: "#black"
+            color: "#3E495F"
           },
           grid: {
             color: "rgba(255,255,255,0.2)"
@@ -47,7 +47,7 @@ export class StackedChartComponent implements OnChanges {
         y: {
           stacked: true,
           ticks: {
-            color: "#black"
+            color: "#3E495F"
           },
           grid: {
             color: "rgba(255,255,255,0.2)"

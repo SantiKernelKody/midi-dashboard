@@ -14,13 +14,10 @@ export class PerformanceService {
         return this.http.get(`${this.baseUrl}/get_stages`);
     }
 
-    getSchoolsAdmin(): Observable<any> {
-        return this.http.get(`${this.baseUrl}/get_schools_admin`);
+    getSchools(): Observable<any> {
+        return this.http.get(`${this.baseUrl}/get_schools`);
     }
 
-    getSchoolsTeacher(): Observable<any> {
-        return this.http.get(`${this.baseUrl}/get_schools_teacher`);
-    }
 
     getPerformanceSchool(schoolId: number, startDate: string, endDate: string, stageId: number, gameId: number): Observable<any> {
         let params = new HttpParams()

@@ -51,7 +51,7 @@ export class SchoolPerformanceComponent {
   }
 
   loadInitialData(): void {
-    this.performanceService.getSchoolsAdmin().subscribe(data => {
+    this.performanceService.getSchools().subscribe(data => {
       this.schools = data.map((school: { name: any; id: any; }) => ({ label: school.name, value: school.id }));
     });
 

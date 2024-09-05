@@ -74,13 +74,13 @@ export class ChildPerformanceComponent {
           this.levelTimesData = data.level_times.data;
           this.levelTimesLabels = data.level_times.labels;
           this.levelStatesData = [
-            { label: 'Completados', data: data.level_states.data[0].data },
-            { label: 'Abandonados', data: data.level_states.data[1].data },
+            { label: 'Completados', data: data.level_states.data[0].data, backgroundColor: data.level_states.data[0].backgroundColor },
+            { label: 'Abandonados', data: data.level_states.data[1].data, backgroundColor: data.level_states.data[1].backgroundColor },
           ];
           this.levelStatesLabels = data.level_states.labels;
           this.storyStatesData = [
-            { label: 'Completados', data: data.story_states.data[0].data },
-            { label: 'Abandonados', data: data.story_states.data[1].data },
+            { label: 'Completados', data: data.story_states.data[0].data, backgroundColor: data.story_states.data[0].backgroundColor },
+            { label: 'Abandonados', data: data.story_states.data[1].data, backgroundColor: data.story_states.data[1].backgroundColor },
           ];
           this.storyStatesLabels = data.story_states.labels;
           this.storyTimesData = data.story_times.data;

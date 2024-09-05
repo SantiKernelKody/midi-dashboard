@@ -1,8 +1,10 @@
 <div class="child-performance-container">
-  <div class="user-info-dropdown">
+  <div class="button-container">
     <button class="back-button" (click)="goBack()">
       <i class="pi pi-arrow-left"></i> Atrás
     </button>
+  </div>
+  <div class="user-info-dropdown">
     <!-- Información del niño -->
     <div class="child-info">
       <div class="child-info-header">
@@ -15,17 +17,19 @@
           tooltipPosition="top"
         ></p-button>
       </div>
-      <p><strong>Nombre:</strong> {{ playerData.full_name }}</p>
-      <p><strong>Edad:</strong> {{ playerData.age }}</p>
-      <p><strong>Etnia:</strong> {{ playerData.ethnicity }}</p>
-      <p>
-        <strong>Nombre del Representante:</strong>
-        {{ playerData.caretaker_name }}
-      </p>
-      <p>
-        <strong>Email del Representante:</strong>
-        {{ playerData.caretaker_email }}
-      </p>
+      <div class="child-info-grid">
+        <p><strong>Nombre:</strong> {{ playerData.full_name }}</p>
+        <p><strong>Edad:</strong> {{ playerData.age }}</p>
+        <p><strong>Etnia:</strong> {{ playerData.ethnicity }}</p>
+        <p>
+          <strong>Nombre del Representante:</strong>
+          {{ playerData.caretaker_name }}
+        </p>
+        <p>
+          <strong>Email del Representante:</strong>
+          {{ playerData.caretaker_email }}
+        </p>
+      </div>
     </div>
 
     <!-- Dropdown para seleccionar juego -->
@@ -56,7 +60,7 @@
     <app-bar-chart
       [title]="'Puntaje por Nivel'"
       [data]="levelGradesData"
-      [color]="'#E3B4FC'"
+      [color]="'#FF8C71'"
       [data_label]="'Nivel de Rendimiento'"
       [labels]="levelGradesLabels"
     ></app-bar-chart>
@@ -64,7 +68,7 @@
     <app-bar-chart
       [title]="'Tiempo por Nivel'"
       [data]="levelTimesData"
-      [color]="'#FFB6C1'"
+      [color]="'#82BEFF'"
       [data_label]="'Tiempo en segundos'"
       [labels]="levelTimesLabels"
     ></app-bar-chart>
@@ -84,7 +88,7 @@
     <app-bar-chart
       [title]="'Tiempo por Historia'"
       [data]="storyTimesData"
-      [color]="'#ADD8E6'"
+      [color]="'#FFCE56'"
       [data_label]="'Tiempo en segundos'"
       [labels]="storyTimesLabels"
     ></app-bar-chart>
